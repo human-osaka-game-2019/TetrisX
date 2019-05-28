@@ -2,7 +2,7 @@
 #include <d3dx9.h>
 #include <dinput.h>
 
-class Initialize {
+class Init {
 public:
 	//　Direct3Dのインターフェイス
 	LPDIRECT3D9 pDirect3D;
@@ -16,7 +16,7 @@ public:
 	LPDIRECTINPUT8 pDinput;
 	//　テクスチャ
 	LPDIRECT3DTEXTURE9 pTexture;
-
+	//カスタムバーテックス
 	struct CustomVertex {
 		FLOAT x, y, z, rhw;
 		DWORD color;
@@ -25,9 +25,9 @@ public:
 
 	BYTE KeyState[256];
 
-	HRESULT BuildDxDevice(HWND hWnd, const TCHAR* FilePath);
-
 	HRESULT InitD3Device(HWND hWnd, const TCHAR* FilePath);
+
+	HRESULT BuildDxDevice(HWND hWnd, const TCHAR* FilePath);
 
 	void InitPresentParameters(HWND hWnd);
 

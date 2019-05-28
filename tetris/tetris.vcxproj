@@ -131,7 +131,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Initialize.cpp" />
-    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Initialize.h" />
