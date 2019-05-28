@@ -1,8 +1,9 @@
 #include <windows.h>
 #include <d3dx9.h>
 #include <dinput.h>
+#include <d3dx9tex.h>
 
-class Initialize {
+class Init {
 public:
 	//　Direct3Dのインターフェイス
 	LPDIRECT3D9 pDirect3D;
