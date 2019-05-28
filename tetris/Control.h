@@ -11,5 +11,5 @@ public:
 
 	void UpdateKeyState();
 
-	void GetKeyState(BYTE KeyState);
+	bool GetKeyState(BYTE KeyNumber);
 };
