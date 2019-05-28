@@ -24,13 +24,19 @@ public:
 		FLOAT tu, tv;
 	};
 
-	BYTE KeyState[256];
+	const int  MASK_NUM = 0x80;
 
-	HRESULT InitD3Device(HWND hWnd, const TCHAR* FilePath);
+	BYTE KeyState[256];
 
 	HRESULT BuildDxDevice(HWND hWnd, const TCHAR* FilePath);
 
-	void InitPresentParameters(HWND hWnd);
+	HRESULT InitD3Device(HWND hWnd, const TCHAR* FilePath);
 
 	HRESULT InitDinput(HWND hWnd);
+
+	void InitPresentParameters(HWND hWnd);
+
+	void UpdateKeyState();
+
+	void GetKeyState(BYTE KeyState);
 };
