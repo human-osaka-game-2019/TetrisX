@@ -62,22 +62,22 @@ HRESULT Init::InitDinput(HWND hWnd)
 		return hr;
 	}
 
-	if (FAILED(hr = pDinput->CreateDevice(GUID_SysKeyboard,&pDxIKetDevice,NULL)))
+	if (FAILED(hr = pDinput->CreateDevice(GUID_SysKeyboard,&pDxIKeyDevice,NULL)))
 	{
 		return hr;
 	}
 
-	if (FAILED(hr = pDxIKetDevice->SetDataFormat(&c_dfDIKeyboard)))
+	if (FAILED(hr = pDxIKeyDevice->SetDataFormat(&c_dfDIKeyboard)))
 	{
 		return hr;
 	}
 
-	if (FAILED(hr = pDxIKetDevice->SetCooperativeLevel(hWnd, DISCL_NONEXCLUSIVE | DISCL_BACKGROUND)))
+	if (FAILED(hr = pDxIKeyDevice->SetCooperativeLevel(hWnd, DISCL_NONEXCLUSIVE | DISCL_BACKGROUND)))
 	{
 		return hr;
 	}
 
-	pDxIKetDevice->Acquire();
+	pDxIKeyDevice->Acquire();
 	return S_OK;
 }
 

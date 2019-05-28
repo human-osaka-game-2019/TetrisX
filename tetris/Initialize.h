@@ -3,7 +3,7 @@
 #include <dinput.h>
 #include <d3dx9tex.h>
 
-class Init {
+class Init{
 public:
 	//　Direct3Dのインターフェイス
 	LPDIRECT3D9 pDirect3D;
@@ -12,7 +12,7 @@ public:
 	//　ウィンドウの設定
 	D3DPRESENT_PARAMETERS D3dPresentParameters;
 	//　DirectInputのキーボードデバイス
-	LPDIRECTINPUTDEVICE8 pDxIKetDevice;
+	LPDIRECTINPUTDEVICE8 pDxIKeyDevice;
 	//　DirectInputのインターフェイス
 	LPDIRECTINPUT8 pDinput;
 	//　テクスチャ

@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <d3d9.h>
+#include <dinput.h>
 
 class Control {
 public:
@@ -10,5 +11,5 @@ public:
 
 	void UpdateKeyState();
 
-	void GetKeyState();
+	void GetKeyState(BYTE KeyState);
 };
