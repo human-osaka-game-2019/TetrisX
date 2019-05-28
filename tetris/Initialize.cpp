@@ -1,3 +1,7 @@
+/*
+	大浦
+*/
+
 #include "Initialize.h"
 
 #pragma comment (lib,"winmm.lib")
@@ -20,7 +24,7 @@ HRESULT Init::BuildDxDevice(HWND hWnd, const TCHAR* filepath)
 	pDirect3D = Direct3DCreate9(D3D_SDK_VERSION);
 
 	if (pDirect3D == NULL) {
-		MessageBox(0, "Direct3Dの作成に失敗しました", NULL, MB_OK);
+		MessageBox(0, _T("Direct3Dの作成に失敗しました"), NULL, MB_OK);
 		return E_FAIL;
 	}
 
@@ -33,7 +37,7 @@ HRESULT Init::BuildDxDevice(HWND hWnd, const TCHAR* filepath)
 
 HRESULT Init::InitD3Device(HWND hWnd, const TCHAR* FilePath) {
 	if (NULL == (pDirect3D = Direct3DCreate9(D3D_SDK_VERSION))) {
-		MessageBox(0, "Direct3Dの作成に失敗しました", "", MB_OK);
+		MessageBox(0, _T("Direct3Dの作成に失敗しました"), _T(""), MB_OK);
 		return E_FAIL;
 	}
 
@@ -43,15 +47,18 @@ HRESULT Init::InitD3Device(HWND hWnd, const TCHAR* FilePath) {
 		D3DCREATE_MIXED_VERTEXPROCESSING,
 		&D3dPresentParameters,&pD3Device))){
 
-		MessageBox(0, "HALモードでDIRECT3Dデバイスの作成に失敗しました\nREFモードで再試行します",NULL,MB_OK);
+		MessageBox(0, _T("HALモードでDIRECT3Dデバイスの作成に失敗しました\nREFモードで再試行します"),NULL,MB_OK);
 		if (FAILED(pDirect3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_REF, hWnd,
 			D3DCREATE_MIXED_VERTEXPROCESSING,
 			&D3dPresentParameters, &pD3Device))) {
-			MessageBox(0, "DIRECT3Dデバイスの作成に失敗しました", NULL, MB_OK);
+			MessageBox(0, _T("DIRECT3Dデバイスの作成に失敗しました"), NULL, MB_OK);
 			return E_FAIL;
 		}
 	}
 }
+/*
+	中島
+*/
 
 HRESULT Init::InitDinput(HWND hWnd)
 {

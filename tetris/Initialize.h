@@ -2,6 +2,7 @@
 #include <d3dx9.h>
 #include <dinput.h>
 #include <d3dx9tex.h>
+#include <tchar.h>
 
 class Init{
 public:
@@ -35,8 +36,4 @@ public:
 	HRESULT InitDinput(HWND hWnd);
 
 	void InitPresentParameters(HWND hWnd);
-
-	void UpdateKeyState();
-
-	void GetKeyState(BYTE KeyState);
 };
