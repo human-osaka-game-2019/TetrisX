@@ -12,7 +12,7 @@ HRESULT Init::InitD3Device(HWND hWnd, const TCHAR* FilePath) {
 		return E_FAIL;
 	}
 
-	InitPresentParameters(hWnd);
+	Init::InitPresentParameters(hWnd);
 
 	if (FAILED(pDirect3D->CreateDevice(D3DADAPTER_DEFAULT,D3DDEVTYPE_HAL,hWnd,
 		D3DCREATE_MIXED_VERTEXPROCESSING,

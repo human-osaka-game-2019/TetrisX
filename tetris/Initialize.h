@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <d3dx9.h>
 #include <dinput.h>
+#include <d3dx9tex.h>
 
 class Init {
 public:
