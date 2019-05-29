@@ -131,15 +131,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Control.cpp" />
+    <ClCompile Include="DirectX.cpp" />
     <ClCompile Include="Initialize.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Control.h" />
+    <ClInclude Include="DirectX.h" />
     <ClInclude Include="Initialize.h" />
+    <ClInclude Include="Main.h" />
     <ClInclude Include="Title.h" />
-    <ClInclude Include="WinMain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
