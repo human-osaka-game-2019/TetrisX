@@ -89,6 +89,8 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 }
 
 VOID Mainloop(MSG* msg) {
+	
+	enum SCENE scene;
 
 	DWORD Prev = timeGetTime();
 	DWORD Curr;
@@ -105,6 +107,17 @@ VOID Mainloop(MSG* msg) {
 			Curr = timeGetTime();
 			if (Curr - Prev >= 1000 / 60) {
 				//Ç±Ç±Ç©ÇÁÉQÅ[ÉÄèàóù
+				switch (scene) {
+				case TITLE:
+
+					break;
+				case GAME:
+
+					break;
+				case RESULT:
+
+					break;
+				}
 
 				Prev = Curr;
 			}
@@ -119,10 +132,10 @@ void InitPresentParameters(HWND hWnd)
 {
 	ZeroMemory(&(init.D3dPresentParameters), sizeof(init.D3dPresentParameters));
 
+	init.D3dPresentParameters.BackBufferWidth = 1280;
+	init.D3dPresentParameters.BackBufferHeight = 720;
 	init.D3dPresentParameters.BackBufferFormat = D3DFMT_UNKNOWN;
 	init.D3dPresentParameters.BackBufferCount = 1;
-	init.D3dPresentParameters.BackBufferHeight = 480;
-	init.D3dPresentParameters.BackBufferWidth = 640;
 	init.D3dPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONE;
 	init.D3dPresentParameters.MultiSampleQuality = 0;
 	init.D3dPresentParameters.hDeviceWindow = hWnd;

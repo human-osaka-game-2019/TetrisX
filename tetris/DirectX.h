@@ -5,7 +5,7 @@
 #include <d3dx9tex.h>
 #include <tchar.h>
 
-
+#define TEX_MAX 10
 
 class Init {
 public:
@@ -26,14 +26,7 @@ public:
 	LPDIRECTINPUT8 pDinput;
 
 	//　テクスチャ
-	LPDIRECT3DTEXTURE9 pTexture;
-
-	//カスタムバーテックス
-	struct CustomVertex {
-		FLOAT x, y, z, rhw;
-		DWORD color;
-		FLOAT tu, tv;
-	};
+	LPDIRECT3DTEXTURE9 pTexture[TEX_MAX];
 
 	const int  MASK_NUM = 0x80;
 
