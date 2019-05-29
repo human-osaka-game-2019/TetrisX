@@ -1,6 +1,7 @@
 #include "Control.h"
-#include "Initialize.h"
+#include "DirectX.h"
 #include "Main.h"
+#include "Title.h"
 
 #define Width 1280
 #define Height 720 
@@ -110,3 +111,25 @@ VOID Mainloop(MSG* msg) {
 	}
 	timeEndPeriod(1);
 }
+
+
+void InitPresentParameters(HWND hWnd)
+{
+	ZeroMemory(&D3dPresentParameters, sizeof(D3dPresentParameters));
+
+	D3dPresentParameters.BackBufferFormat = D3DFMT_UNKNOWN;
+	D3dPresentParameters.BackBufferCount = 1;
+	D3dPresentParameters.BackBufferHeight = 480;
+	D3dPresentParameters.BackBufferWidth = 640;
+	D3dPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONE;
+	D3dPresentParameters.MultiSampleQuality = 0;
+	D3dPresentParameters.hDeviceWindow = hWnd;
+	D3dPresentParameters.EnableAutoDepthStencil = FALSE;
+	D3dPresentParameters.AutoDepthStencilFormat = D3DFMT_A1R5G5B5;
+	D3dPresentParameters.Flags = 0;
+	D3dPresentParameters.FullScreen_RefreshRateInHz = 0;
+	D3dPresentParameters.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+	D3dPresentParameters.SwapEffect = D3DSWAPEFFECT_DISCARD;
+	D3dPresentParameters.Windowed = TRUE;
+}
+
