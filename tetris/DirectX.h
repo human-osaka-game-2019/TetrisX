@@ -5,6 +5,8 @@
 #include <d3dx9tex.h>
 #include <tchar.h>
 
+
+
 class Init {
 public:
 	//　Direct3Dのインターフェイス
@@ -16,6 +18,7 @@ public:
 	//　ウィンドウの設定
 	D3DPRESENT_PARAMETERS D3dPresentParameters;
 
+	
 	//　DirectInputのキーボードデバイス
 	LPDIRECTINPUTDEVICE8 pDxIKeyDevice;
 

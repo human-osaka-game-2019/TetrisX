@@ -1,5 +1,5 @@
 #include "Control.h"
-#include "Initialize.h"
+#include "DirectX.h"
 
 Init init;
 

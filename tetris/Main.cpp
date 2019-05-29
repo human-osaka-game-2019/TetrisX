@@ -5,6 +5,8 @@
 
 #define Width 1280
 #define Height 720 
+
+Init init;
  
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow) {
 	HWND hWnd = NULL;
@@ -115,21 +117,21 @@ VOID Mainloop(MSG* msg) {
 
 void InitPresentParameters(HWND hWnd)
 {
-	ZeroMemory(&D3dPresentParameters, sizeof(D3dPresentParameters));
+	ZeroMemory(&(init.D3dPresentParameters), sizeof(init.D3dPresentParameters));
 
-	D3dPresentParameters.BackBufferFormat = D3DFMT_UNKNOWN;
-	D3dPresentParameters.BackBufferCount = 1;
-	D3dPresentParameters.BackBufferHeight = 480;
-	D3dPresentParameters.BackBufferWidth = 640;
-	D3dPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONE;
-	D3dPresentParameters.MultiSampleQuality = 0;
-	D3dPresentParameters.hDeviceWindow = hWnd;
-	D3dPresentParameters.EnableAutoDepthStencil = FALSE;
-	D3dPresentParameters.AutoDepthStencilFormat = D3DFMT_A1R5G5B5;
-	D3dPresentParameters.Flags = 0;
-	D3dPresentParameters.FullScreen_RefreshRateInHz = 0;
-	D3dPresentParameters.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
-	D3dPresentParameters.SwapEffect = D3DSWAPEFFECT_DISCARD;
-	D3dPresentParameters.Windowed = TRUE;
+	init.D3dPresentParameters.BackBufferFormat = D3DFMT_UNKNOWN;
+	init.D3dPresentParameters.BackBufferCount = 1;
+	init.D3dPresentParameters.BackBufferHeight = 480;
+	init.D3dPresentParameters.BackBufferWidth = 640;
+	init.D3dPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONE;
+	init.D3dPresentParameters.MultiSampleQuality = 0;
+	init.D3dPresentParameters.hDeviceWindow = hWnd;
+	init.D3dPresentParameters.EnableAutoDepthStencil = FALSE;
+	init.D3dPresentParameters.AutoDepthStencilFormat = D3DFMT_A1R5G5B5;
+	init.D3dPresentParameters.Flags = 0;
+	init.D3dPresentParameters.FullScreen_RefreshRateInHz = 0;
+	init.D3dPresentParameters.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+	init.D3dPresentParameters.SwapEffect = D3DSWAPEFFECT_DISCARD;
+	init.D3dPresentParameters.Windowed = TRUE;
 }
 

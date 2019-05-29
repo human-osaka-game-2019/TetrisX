@@ -12,3 +12,6 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME);
 
 //ƒƒCƒ“ƒ‹[ƒv
 VOID Mainloop(MSG* msg);
+
+
+	void InitPresentParameters(HWND hWnd);
