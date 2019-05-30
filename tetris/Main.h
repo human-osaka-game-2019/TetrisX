@@ -39,3 +39,10 @@ enum SCENE {
 	GAME,
 	RESULT
 };
+
+enum SCENE_PHASE {
+	LOAD,
+	PROCESSING,
+	RELEASES
+};
+

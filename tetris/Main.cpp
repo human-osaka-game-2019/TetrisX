@@ -89,8 +89,7 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 }
 
 void Mainloop(MSG* msg) {
-	
-	enum SCENE scene = TITLE;
+	SCENE scene = TITLE;
 
 	DWORD Prev = timeGetTime();
 	DWORD Curr;
@@ -111,7 +110,7 @@ void Mainloop(MSG* msg) {
 				//Ç±Ç±Ç©ÇÁÉQÅ[ÉÄèàóù
 				switch (scene) {
 				case TITLE:
-					title_Scene();
+					title.Title_Scene();
 					break;
 				case GAME:
 

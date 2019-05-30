@@ -143,6 +143,9 @@
     <ClInclude Include="Result.h" />
     <ClInclude Include="Title.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Title_Back.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
