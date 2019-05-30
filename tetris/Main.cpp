@@ -1,4 +1,3 @@
-#include "Control.h"
 #include "DirectX.h"
 #include "Main.h"
 #include "Title.h"
@@ -6,7 +5,7 @@
 #define Width 1280
 #define Height 720 
 
-Init init;
+extern DirectX dx;
  
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow) {
 	HWND hWnd = NULL;
@@ -88,9 +87,9 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 	);
 }
 
-VOID Mainloop(MSG* msg) {
+void Mainloop(MSG* msg) {
 	
-	enum SCENE scene;
+	enum SCENE scene = TITLE;
 
 	DWORD Prev = timeGetTime();
 	DWORD Curr;
@@ -109,7 +108,7 @@ VOID Mainloop(MSG* msg) {
 				//Ç±Ç±Ç©ÇÁÉQÅ[ÉÄèàóù
 				switch (scene) {
 				case TITLE:
-
+					title_Scene();
 					break;
 				case GAME:
 
@@ -128,23 +127,4 @@ VOID Mainloop(MSG* msg) {
 }
 
 
-void InitPresentParameters(HWND hWnd)
-{
-	ZeroMemory(&(init.D3dPresentParameters), sizeof(init.D3dPresentParameters));
-
-	init.D3dPresentParameters.BackBufferWidth = 1280;
-	init.D3dPresentParameters.BackBufferHeight = 720;
-	init.D3dPresentParameters.BackBufferFormat = D3DFMT_UNKNOWN;
-	init.D3dPresentParameters.BackBufferCount = 1;
-	init.D3dPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONE;
-	init.D3dPresentParameters.MultiSampleQuality = 0;
-	init.D3dPresentParameters.hDeviceWindow = hWnd;
-	init.D3dPresentParameters.EnableAutoDepthStencil = FALSE;
-	init.D3dPresentParameters.AutoDepthStencilFormat = D3DFMT_A1R5G5B5;
-	init.D3dPresentParameters.Flags = 0;
-	init.D3dPresentParameters.FullScreen_RefreshRateInHz = 0;
-	init.D3dPresentParameters.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
-	init.D3dPresentParameters.SwapEffect = D3DSWAPEFFECT_DISCARD;
-	init.D3dPresentParameters.Windowed = TRUE;
-}
 

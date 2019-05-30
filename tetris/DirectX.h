@@ -1,4 +1,3 @@
-
 #include <windows.h>
 #include <d3dx9.h>
 #include <dinput.h>
@@ -7,7 +6,7 @@
 
 #define TEX_MAX 10
 
-class Init {
+class DirectX {
 public:
 	//　Direct3Dのインターフェイス
 	LPDIRECT3D9 pDirect3D;
@@ -17,7 +16,6 @@ public:
 
 	//　ウィンドウの設定
 	D3DPRESENT_PARAMETERS D3dPresentParameters;
-
 	
 	//　DirectInputのキーボードデバイス
 	LPDIRECTINPUTDEVICE8 pDxIKeyDevice;
@@ -37,5 +35,11 @@ public:
 	HRESULT InitD3Device(HWND hWnd, const TCHAR* FilePath);
 
 	HRESULT InitDinput(HWND hWnd);
+
+	void InitPresentParameters(HWND hWnd);
+
+	void UpdateKeyState();
+
+	bool GetKeyState(BYTE KeyNumber);
 
 };

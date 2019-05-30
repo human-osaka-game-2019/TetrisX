@@ -3,7 +3,6 @@
 */
 
 #include "DirectX.h"
-#include "Main.h"
 
 #pragma comment (lib,"winmm.lib")
 #pragma comment (lib,"d3d9.lib")
@@ -11,7 +10,7 @@
 #pragma comment (lib,"dxguid.lib")
 #pragma comment (lib,"dinput8.lib")
 
-HRESULT Init::BuildDxDevice(HWND hWnd, const TCHAR* filepath)
+HRESULT DirectX::BuildDxDevice(HWND hWnd, const TCHAR* filepath)
 {
 	if (FAILED(InitD3Device(hWnd, filepath))) {
 		return E_FAIL;
@@ -35,7 +34,7 @@ HRESULT Init::BuildDxDevice(HWND hWnd, const TCHAR* filepath)
 	return S_OK;
 }
 
-HRESULT Init::InitD3Device(HWND hWnd, const TCHAR * FilePath) {
+HRESULT DirectX::InitD3Device(HWND hWnd, const TCHAR * FilePath) {
 	if (NULL == (pDirect3D = Direct3DCreate9(D3D_SDK_VERSION))) {
 		MessageBox(0, _T("Direct3D‚Ìì¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½"), _T(""), MB_OK);
 		return E_FAIL;
@@ -56,11 +55,12 @@ HRESULT Init::InitD3Device(HWND hWnd, const TCHAR * FilePath) {
 		}
 	}
 }
+
 /*
 	’†“‡
 */
 
-HRESULT Init::InitDinput(HWND hWnd)
+HRESULT DirectX::InitDinput(HWND hWnd)
 {
 	HRESULT hr;
 
@@ -86,4 +86,38 @@ HRESULT Init::InitDinput(HWND hWnd)
 
 	pDxIKeyDevice->Acquire();
 	return S_OK;
+}
+
+void DirectX::InitPresentParameters(HWND hWnd)
+{
+	ZeroMemory( &D3dPresentParameters, sizeof(D3dPresentParameters));
+
+	D3dPresentParameters.BackBufferWidth = 1280;
+	D3dPresentParameters.BackBufferHeight = 720;
+	D3dPresentParameters.BackBufferFormat = D3DFMT_UNKNOWN;
+	D3dPresentParameters.BackBufferCount = 1;
+	D3dPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONE;
+	D3dPresentParameters.MultiSampleQuality = 0;
+	D3dPresentParameters.hDeviceWindow = hWnd;
+	D3dPresentParameters.EnableAutoDepthStencil = FALSE;
+	D3dPresentParameters.AutoDepthStencilFormat = D3DFMT_A1R5G5B5;
+	D3dPresentParameters.Flags = 0;
+	D3dPresentParameters.FullScreen_RefreshRateInHz = 0;
+	D3dPresentParameters.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+	D3dPresentParameters.SwapEffect = D3DSWAPEFFECT_DISCARD;
+	D3dPresentParameters.Windowed = TRUE;
+}
+
+void DirectX::UpdateKeyState() {
+	HRESULT hr = pDxIKeyDevice->Acquire();
+	if ((hr == DI_OK) || (hr == S_FALSE)) {
+		pDxIKeyDevice->GetDeviceState(sizeof(KeyState), &KeyState);
+	}
+}
+
+bool DirectX::GetKeyState(BYTE KeyNumber) {
+	if (KeyState[KeyNumber] & 0x80) {
+		return true;
+	}
+	return false;
 }

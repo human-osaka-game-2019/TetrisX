@@ -1,12 +1,16 @@
 #include <windows.h>
 #include <d3d9.h>
 
+#include "DirectX.h"
+
 //カスタムバーテックス
 struct CustomVertex {
 	FLOAT x, y, z, rhw;
 	DWORD color;
 	FLOAT tu, tv;
 };
+
+extern DirectX dx;
 
 //WinMain関数
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow);
@@ -18,17 +22,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME);
 
 //メインループ
-VOID Mainloop(MSG* msg);
-
-void InitPresentParameters(HWND hWnd);
+void Mainloop(MSG* msg);
 
 enum TEX_NO {
-	TITLE,
 	TITLE_BACK,
+	TITLE_FONT,
 	GAME_BACK,
 	GAME_STAGE,
 	GAME_BLOCK,
-	RESULT
+	RESULT_BACK,
+	RESULT_FONT
 };
 
 enum SCENE {
