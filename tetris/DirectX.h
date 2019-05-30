@@ -1,3 +1,6 @@
+#ifndef DirectX_H
+#define DirectX_H
+
 #include <windows.h>
 #include <d3dx9.h>
 #include <dinput.h>
@@ -43,3 +46,4 @@ public:
 	bool GetKeyState(BYTE KeyNumber);
 
 };
+#endif

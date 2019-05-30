@@ -5,7 +5,7 @@
 #define Width 1280
 #define Height 720 
 
-extern DirectX dx;
+DirectX dx;
  
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow) {
 	HWND hWnd = NULL;
@@ -13,6 +13,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline,
 	//メッセージ
 	MSG msg;
 	hWnd = GenerateWindow(&hWnd, &hInstance, API_NAME);
+	dx.BuildDxDevice(hWnd,_T("Blank.jpg"));
 
 	Mainloop(&msg);
 
@@ -64,7 +65,7 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 	Wndclass.hInstance = *hInstance;	//ハンドルインスタンス
 	Wndclass.hIcon = LoadIcon(NULL, IDI_APPLICATION); //アイコン
 	Wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);	//カーソル
-	Wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH); //背景のブラシ,色
+	Wndclass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH); //背景のブラシ,色
 	Wndclass.lpszMenuName = NULL; //メニュー画面の名前
 	Wndclass.lpszClassName = API_NAME; //アプリケーションの名前
 
@@ -105,6 +106,8 @@ void Mainloop(MSG* msg) {
 		else {
 			Curr = timeGetTime();
 			if (Curr - Prev >= 1000 / 60) {
+				dx.pD3Device->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
+				dx.pD3Device->BeginScene();
 				//ここからゲーム処理
 				switch (scene) {
 				case TITLE:
@@ -117,6 +120,8 @@ void Mainloop(MSG* msg) {
 
 					break;
 				}
+				dx.pD3Device->EndScene();
+				dx.pD3Device->Present(NULL, NULL, NULL, NULL);
 
 				Prev = Curr;
 			}

@@ -54,6 +54,13 @@ HRESULT DirectX::InitD3Device(HWND hWnd, const TCHAR * FilePath) {
 			return E_FAIL;
 		}
 	}
+	if (FAILED(D3DXCreateTextureFromFileEx(pD3Device, FilePath, 100, 100, 0, 0, D3DFMT_UNKNOWN,
+		D3DPOOL_DEFAULT, D3DX_FILTER_NONE, D3DX_DEFAULT,
+		0xff000000, NULL, NULL, &pTexture[0]))) {
+		MessageBox(0, _T("テクスチャの作成に失敗しました"), _T(""), MB_OK);
+		return E_FAIL;
+	}
+	return S_OK;
 }
 
 /*
