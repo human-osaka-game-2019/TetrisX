@@ -6,6 +6,7 @@
 #define Height 720 
 
 DirectX dx;
+Title title;
  
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow) {
 	HWND hWnd = NULL;

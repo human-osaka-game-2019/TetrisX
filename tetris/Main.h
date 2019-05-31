@@ -1,3 +1,6 @@
+#ifndef MAIN_H
+#define MAIN_H
+
 #include <windows.h>
 #include <d3d9.h>
 
@@ -40,9 +43,4 @@ enum SCENE {
 	RESULT
 };
 
-enum SCENE_PHASE {
-	LOAD,
-	PROCESSING,
-	RELEASES
-};
-
+#endif
