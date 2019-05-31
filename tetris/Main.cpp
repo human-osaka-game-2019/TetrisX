@@ -96,9 +96,6 @@ void Mainloop(MSG* msg) {
 
 	DWORD Prev = timeGetTime();
 	DWORD Curr;
-	
-	title.Init();
-	//game.Init();
 
 	timeBeginPeriod(1);
 

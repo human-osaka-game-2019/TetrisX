@@ -8,7 +8,7 @@ void Game::Game_Scene() {
 	case LOAD:
 		Loading();
 	case PROCESSING:
-		Process(customvertex);
+		Process(Block_Vertex);
 	case RELEASES:
 		Release();
 	}

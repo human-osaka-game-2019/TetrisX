@@ -19,7 +19,9 @@ private:
 	void Loading();
 	void Process(CustomVertex*);
 	void Release();
-	CustomVertex customvertex[231];
+	CustomVertex Block_Vertex[231] = {
+
+	};
 };
 
 #endif
