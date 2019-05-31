@@ -73,6 +73,7 @@ HRESULT DirectX::InitDinput(HWND hWnd)
 
 	if (FAILED(hr = DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (VOID * *)& pDinput, NULL)))
 	{
+		MessageBox(0, _T("DirectInput‚Ìì¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½"), NULL, MB_OK);
 		return hr;
 	}
 
@@ -127,4 +128,29 @@ bool DirectX::GetKeyState(BYTE KeyNumber) {
 		return true;
 	}
 	return false;
+}
+
+void DirectX::All_Release() {
+	TexRelease();
+
+	if (pDxIKeyDevice)
+	{
+		pDxIKeyDevice->Unacquire();
+	}
+
+	pDxIKeyDevice->Release();
+	pDxIKeyDevice = nullptr;
+	pDinput->Release();
+	pDinput = nullptr;
+	pD3Device->Release();
+	pD3Device = nullptr;
+	pDirect3D->Release();
+	pDirect3D = nullptr;
+}
+
+void DirectX::TexRelease() {
+	for (int i = 0; i < TEX_MAX; i++) {
+		pTexture[i]->Release();
+		pTexture[i] = nullptr;
+	}
 }

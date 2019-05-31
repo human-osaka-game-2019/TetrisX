@@ -2,6 +2,14 @@
 
 Title::SCENE_PHASE Phase = Title::LOAD;
 
+
+CustomVertex customvertex[4]{
+{0,0,0,1,0xffffff,0.0f,0.0f},
+{1280,0,0,1,0xffffff,1.0f,0.0f},
+{1280,720,0,1,0xffffff,1.0f,1.0f},
+{0,720,0,1,0xffffff,0.0f,1.0f}
+};
+
 void Title::Title_Scene() {
 
 	switch (Phase) {
@@ -18,27 +26,25 @@ void Title::Title_Scene() {
 }
 
 void Title::Loading() {
-	if (loading) {
 		D3DXCreateTextureFromFile(
 			dx.pD3Device,
 			_T("Title_Back.png"),
 			&dx.pTexture[TITLE_BACK]);
-		loading = false;
 		Phase = PROCESSING;
-	}
 }
 
 void Title::Process(CustomVertex* cutomvertex) {
-	if (process) {
-		dx.pD3Device->SetTexture(0, dx.pTexture[TITLE_BACK]);
-		dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, cutomvertex, sizeof(CustomVertex));
-		if (dx.GetKeyState(DIK_RETURN)) {
-			Phase = RELEASES;
-		}
-	}
+
+	dx.pD3Device->SetTexture(0, dx.pTexture[TITLE_BACK]);
+	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, cutomvertex, sizeof(CustomVertex));
+	/*if (dx.GetKeyState(DIK_RETURN)) {
+		Phase = RELEASES;
+	}*/
+	Phase = RELEASES;
 }
 
 void Title::Release() {
+
 	dx.pTexture[TITLE_BACK]->Release();
 	dx.pTexture[TITLE_BACK] = nullptr;
 	scene = GAME;

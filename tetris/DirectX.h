@@ -45,5 +45,8 @@ public:
 
 	bool GetKeyState(BYTE KeyNumber);
 
+	void All_Release();
+
+	void TexRelease();
 };
 #endif

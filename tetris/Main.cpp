@@ -1,12 +1,15 @@
 #include "DirectX.h"
 #include "Main.h"
 #include "Title.h"
+#include "Game.h"
 
 #define Width 1280
 #define Height 720 
 
 DirectX dx;
 Title title;
+Game game;
+SCENE scene = TITLE;
  
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow) {
 	HWND hWnd = NULL;
@@ -90,12 +93,13 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 }
 
 void Mainloop(MSG* msg) {
-	SCENE scene = TITLE;
-	title.loading = true;
 
 	DWORD Prev = timeGetTime();
 	DWORD Curr;
 	
+	title.Init();
+	//game.Init();
+
 	timeBeginPeriod(1);
 
 	ZeroMemory(msg, sizeof(msg));
@@ -120,6 +124,8 @@ void Mainloop(MSG* msg) {
 				case RESULT:
 
 					break;
+				default:
+					MessageBox(0, _T("ƒV[ƒ“Ý’è‚ª‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"), NULL, MB_OK);
 				}
 				dx.pD3Device->EndScene();
 				dx.pD3Device->Present(NULL, NULL, NULL, NULL);
