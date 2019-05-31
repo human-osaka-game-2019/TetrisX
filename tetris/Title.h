@@ -6,6 +6,10 @@
 
 class Title {
 public:
+
+	bool loading;
+	bool process;
+	bool release;
 	void Title_Scene();
 
 	enum SCENE_PHASE {
@@ -15,12 +19,17 @@ public:
 	};
 
 private:
-	bool loading;
-	bool lrocess;
-	bool lelease;
+
 	void Loading();
 	void Process(CustomVertex*);
 	void Release();
+	
+	CustomVertex customvertex[4]{
+	{0,0,0,1,0xffffff,0.0f,0.0f},
+	{1280,0,0,1,0xffffff,1.0f,0.0f},
+	{1280,720,0,1,0xffffff,1.0f,1.0f},
+	{0,720,0,1,0xffffff,0.0f,1.0f}
+	};
 };
 
 #endif

@@ -91,6 +91,7 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 
 void Mainloop(MSG* msg) {
 	SCENE scene = TITLE;
+	title.loading = true;
 
 	DWORD Prev = timeGetTime();
 	DWORD Curr;

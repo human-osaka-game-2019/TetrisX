@@ -13,20 +13,6 @@ struct CustomVertex {
 	FLOAT tu, tv;
 };
 
-extern DirectX dx;
-
-//WinMain関数
-INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow);
-
-//ウィンドプロシージャの生成
-LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-
-//window作成
-HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME);
-
-//メインループ
-void Mainloop(MSG* msg);
-
 enum TEX_NO {
 	TITLE_BACK,
 	TITLE_FONT,
@@ -42,5 +28,20 @@ enum SCENE {
 	GAME,
 	RESULT
 };
+
+extern DirectX dx;
+extern SCENE scene;
+
+//WinMain関数
+INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow);
+
+//ウィンドプロシージャの生成
+LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+//window作成
+HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME);
+
+//メインループ
+void Mainloop(MSG* msg);
 
 #endif
