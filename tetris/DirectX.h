@@ -43,7 +43,7 @@ public:
 
 	void UpdateKeyState();
 
-	bool GetKeyState(BYTE KeyNumber);
+	bool GetKeyState(int KeyNumber);
 
 	void All_Release();
 

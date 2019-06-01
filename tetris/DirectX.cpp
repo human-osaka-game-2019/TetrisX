@@ -123,7 +123,7 @@ void DirectX::UpdateKeyState() {
 	}
 }
 
-bool DirectX::GetKeyState(BYTE KeyNumber) {
+bool DirectX::GetKeyState(int KeyNumber) {
 	if (KeyState[KeyNumber] & 0x80) {
 		return true;
 	}

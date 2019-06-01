@@ -2,6 +2,7 @@
 #include "Main.h"
 #include "Title.h"
 #include "Game.h"
+#include "Result.h"
 
 #define Width 1280
 #define Height 720 
@@ -9,6 +10,7 @@
 DirectX dx;
 Title title;
 Game game;
+Result result;
 SCENE scene = TITLE;
  
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow) {
@@ -110,16 +112,17 @@ void Mainloop(MSG* msg) {
 			if (Curr - Prev >= 1000 / 60) {
 				dx.pD3Device->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
 				dx.pD3Device->BeginScene();
+				dx.UpdateKeyState();
 				//‚±‚±‚©‚çƒQ[ƒ€ˆ—
 				switch (scene) {
 				case TITLE:
 					title.Title_Scene();
 					break;
 				case GAME:
-
+					game.Game_Scene();
 					break;
 				case RESULT:
-
+					result.Result_Scene();
 					break;
 				default:
 					MessageBox(0, _T("ƒV[ƒ“İ’è‚ª‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"), NULL, MB_OK);
@@ -134,6 +137,3 @@ void Mainloop(MSG* msg) {
 	}
 	timeEndPeriod(1);
 }
-
-
-

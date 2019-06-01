@@ -39,5 +39,6 @@ void Title::Release() {
 
 	dx.pTexture[TITLE_BACK]->Release();
 	dx.pTexture[TITLE_BACK] = nullptr;
-	scene = GAME;
+	scene = RESULT;
+
 }
