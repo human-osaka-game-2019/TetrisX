@@ -131,7 +131,7 @@ bool DirectX::GetKeyState(int KeyNumber) {
 }
 
 void DirectX::All_Release() {
-	TexRelease();
+	
 
 	if (pDxIKeyDevice)
 	{
@@ -148,9 +148,3 @@ void DirectX::All_Release() {
 	pDirect3D = nullptr;
 }
 
-void DirectX::TexRelease() {
-	for (int i = 0; i < TEX_MAX; i++) {
-		pTexture[i]->Release();
-		pTexture[i] = nullptr;
-	}
-}

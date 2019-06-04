@@ -134,6 +134,14 @@ void Mainloop(MSG* msg) {
 			}
 		}
 		Sleep(1);
+		if (dx.GetKeyState(DIK_ESCAPE)) {
+
+
+			PostQuitMessage(0);
+		}
 	}
+
+	dx.All_Release();
+
 	timeEndPeriod(1);
 }

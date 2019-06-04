@@ -16,15 +16,16 @@ public:
 	};
 
 private:
-
+	FLOAT window_width = 1280;
+	FLOAT window_height = 720;
 	void Loading();
-	void Process(CustomVertex*);
+	void Process();
 	void Release();
 	CustomVertex ResultBack_Vertex[4]{
 		{0,0,0,1,0xffffff,0.0f,0.0f},
-		{1280,0,0,1,0xffffff,1.0f,0.0f},
-		{1280,720,0,1,0xffffff,1.0f,1.0f},
-		{0,720,0,1,0xffffff,0.0f,1.0f}
+		{window_width,0,0,1,0xffffff,1.0f,0.0f},
+		{window_width,window_height,0,1,0xffffff,1.0f,1.0f},
+		{0,window_height,0,1,0xffffff,0.0f,1.0f}
 	};
 };
 #endif

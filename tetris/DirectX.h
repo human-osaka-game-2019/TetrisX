@@ -47,6 +47,5 @@ public:
 
 	void All_Release();
 
-	void TexRelease();
 };
 #endif

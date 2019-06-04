@@ -9,27 +9,27 @@ void Title::Title_Scene() {
 		Loading();
 		break;
 	case PROCESSING:
-		Process(TitleBack_Vertex);
+		Process();
 		break;
 	case RELEASES:
 		Release();
+		Phase = LOAD;
 		break;
 	}
 }
 
 void Title::Loading() {
-
-		D3DXCreateTextureFromFile(
+			D3DXCreateTextureFromFile(
 			dx.pD3Device,
 			_T("Title_Back.png"),
 			&dx.pTexture[TITLE_BACK]);
 		Phase = PROCESSING;
 }
 
-void Title::Process(CustomVertex* cutomvertex) {
+void Title::Process() {
 
 	dx.pD3Device->SetTexture(0, dx.pTexture[TITLE_BACK]);
-	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, cutomvertex, sizeof(CustomVertex));
+	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, TitleBack_Vertex, sizeof(CustomVertex));
 	if (dx.GetKeyState(DIK_RETURN)) {
 		Phase = RELEASES;
 	}
@@ -39,6 +39,6 @@ void Title::Release() {
 
 	dx.pTexture[TITLE_BACK]->Release();
 	dx.pTexture[TITLE_BACK] = nullptr;
-	scene = RESULT;
+	scene = GAME;
 
 }

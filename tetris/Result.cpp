@@ -9,10 +9,11 @@ void Result::Result_Scene() {
 		Loading();
 		break;
 	case PROCESSING:
-		Process(ResultBack_Vertex);
+		Process();
 		break;
 	case RELEASES:
 		Release();
+		Phase = LOAD;
 		break;
 	}
 }
@@ -26,10 +27,10 @@ void Result::Loading() {
 	Phase = PROCESSING;
 }
 
-void Result::Process(CustomVertex* cutomvertex) {
+void Result::Process() {
 
 	dx.pD3Device->SetTexture(0, dx.pTexture[RESULT_BACK]);
-	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, cutomvertex, sizeof(CustomVertex));
+	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2,ResultBack_Vertex, sizeof(CustomVertex));
 	if (dx.GetKeyState(DIK_RETURN)) {
 		Phase = RELEASES;
 	}
