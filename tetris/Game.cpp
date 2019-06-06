@@ -2,6 +2,7 @@
 
 Game::SCENE_PAHSE Phase = Game::LOAD;
 
+//ゲームのフェーズの移動
 void Game::Game_Scene() {
 
 	switch (Phase) {
@@ -18,6 +19,7 @@ void Game::Game_Scene() {
 	}
 }
 
+//ゲームのテクスチャの読み込み
 void Game::Loading() {
 	D3DXCreateTextureFromFile(
 		dx.pD3Device,
@@ -37,6 +39,7 @@ void Game::Loading() {
 	Phase = PROCESSING;
 }
 
+//ゲームの描画と動き
 void Game::Process() {
 
 
@@ -45,35 +48,31 @@ void Game::Process() {
 		BLOCK_y -= 36;
 			
 	}
-	
+	//下移動
 	if (dx.GetKeyState(DIK_DOWN)) {
 		
 			BLOCK_y += 36;
 		
 	}
-	
+	//右移動
 	if (dx.GetKeyState(DIK_RIGHT)) {
 	
 			BLOCK_x += 36;
 
 	}
-	
+	//左移動
 	if (dx.GetKeyState(DIK_LEFT)) {
 		
 		BLOCK_x -= 36;
 		
 	}
 	
-	CustomVertex GameBlock_Vertex[4] = {
-		{BLOCK_x,BLOCK_y,1,1,0xffffff,0.0f,0.0f},
-		{BLOCK_x + BLOCK_width,BLOCK_y,1,1,0xffffff,1.0f,0.0f},
-		{BLOCK_x + BLOCK_width,BLOCK_y + BLOCK_height,1,1,0xffffff,1.0f,1.0f},
-		{BLOCK_x,BLOCK_y + BLOCK_height,1,1,0xffffff,0.0f,1.0f}
-	};
-
+	//ゲーム時の背景描画
 	dx.pD3Device->SetTexture(0, dx.pTexture[GAME_BACK]);
 	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, GameBack_Vertex, sizeof(CustomVertex));
+	
 
+	//ステージ描画
 	for (INT row = 0; row <= 20; row++) {
 	
 		for (INT col = 0; col <= 10; col++) {
@@ -88,18 +87,172 @@ void Game::Process() {
 			dx.pD3Device->SetTexture(0, dx.pTexture[GAME_STAGE]);
 			dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, GameStage_Vertex, sizeof(CustomVertex));
 		}
+	}
 
+
+
+
+
+
+
+
+
+
+
+	/*ブロック描画*/
+
+
+	//Lのブロック
+	for (INT row = 0; row < 4; row++) {
+
+		for (INT col = 0; col < 4; col++) {
+			if ((col == 1&&row <3)||(row == 2&&col <3&&col > 0)) {
+				CustomVertex GameBlock_L_Vertex[4] = {
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,0.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,1.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,1.0f,1.0f},
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,0.0f,1.0f},
+				};
+				dx.pD3Device->SetTexture(0, dx.pTexture[GAME_BLOCK]);
+				dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, GameBlock_L_Vertex, sizeof(CustomVertex));
+			}
+		}
 	}
 	
-	dx.pD3Device->SetTexture(0, dx.pTexture[GAME_BLOCK]);
-	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, GameBlock_Vertex, sizeof(CustomVertex));
+	//Iのブロック
+	for (INT row = 0; row < 4; row++) {
+
+		for (INT col = 0; col < 4; col++) {
+			if (col == 1) {
+				CustomVertex GameBlock_I_Vertex[4] = {
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,0.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,1.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,1.0f,1.0f},
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,0.0f,1.0f},
+				};
+
+				dx.pD3Device->SetTexture(0, dx.pTexture[GAME_BLOCK]);
+				dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, GameBlock_I_Vertex, sizeof(CustomVertex));
+			}
+		}
+	}
+	
+	//Jのブロック
+	for (INT row = 0; row < 4; row++) {
+
+		for (INT col = 0; col < 4; col++) {
+			if ((col == 2&&row < 3)||(row == 2&&col <3&&col >0)) {
+				CustomVertex GameBlock_J_Vertex[4] = {
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,0.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,1.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,1.0f,1.0f},
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,0.0f,1.0f},
+				};
+
+				dx.pD3Device->SetTexture(0, dx.pTexture[GAME_BLOCK]);
+				dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, GameBlock_J_Vertex, sizeof(CustomVertex));
+			}
+		}
+	}
+	
+	//Sのブロック
+	for (INT row = 0; row < 4; row++) {
+
+		for (INT col = 0; col < 4; col++) {
+			if ((col == 1&&row == 1)||(col == 2&&row == 1)||(col == 0&&row == 2)||(col == 1&&row == 2)) {
+				CustomVertex GameBlock_S_Vertex[4] = {
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,0.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,1.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,1.0f,1.0f},
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,0.0f,1.0f},
+				};
+
+				dx.pD3Device->SetTexture(0, dx.pTexture[GAME_BLOCK]);
+				dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, GameBlock_S_Vertex, sizeof(CustomVertex));
+			}
+		}
+	}
+	
+	//Oのブロック
+	for (INT row = 0; row < 4; row++) {
+
+		for (INT col = 0; col < 4; col++) {
+			if ((col == 1||col == 2)&&(row == 1||row == 2)) {
+				CustomVertex GameBlock_O_Vertex[4] = {
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,0.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,1.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,1.0f,1.0f},
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,0.0f,1.0f},
+				};
+
+				dx.pD3Device->SetTexture(0, dx.pTexture[GAME_BLOCK]);
+				dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, GameBlock_O_Vertex, sizeof(CustomVertex));
+			}
+		}
+	}
+	
+	//Zのブロック
+	for (INT row = 0; row < 4; row++) {
+
+		for (INT col = 0; col < 4; col++) {
+		if ((col == 0 && row == 1) || (col == 1 && row == 1) || (col == 1 && row == 2) || (col == 2 && row == 2)) {
+				CustomVertex GameBlock_Z_Vertex[4] = {
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,0.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,1.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,1.0f,1.0f},
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,0.0f,1.0f},
+				};
+
+				dx.pD3Device->SetTexture(0, dx.pTexture[GAME_BLOCK]);
+				dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, GameBlock_Z_Vertex, sizeof(CustomVertex));
+		}
+		}
+	}
+	
+	//Tのブロック
+	for (INT row = 0; row < 4; row++) {
+
+		for (INT col = 0; col < 4; col++) {
+			if ((col == 0&&row == 1)||(col == 1&&row == 1)||(col == 2&&row == 1)||(col == 1&&row == 2)){
+				CustomVertex GameBlock_T_Vertex[4] = {
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,0.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height * row               ,0,1,0xffffff,1.0f,0.0f},
+					{BLOCK_x + BLOCK_width + BLOCK_width * col,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,1.0f,1.0f},
+					{BLOCK_x + BLOCK_width * col              ,BLOCK_y + BLOCK_height + BLOCK_height * row,0,1,0xffffff,0.0f,1.0f},
+				};
+
+				dx.pD3Device->SetTexture(0, dx.pTexture[GAME_BLOCK]);
+				dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, GameBlock_T_Vertex, sizeof(CustomVertex));
+			}
+		}
+	}
 	
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 	if (dx.GetKeyState(DIK_RETURN)) {
 		Phase = RELEASES;
 	}
 }
 
+//ゲームのテクスチャの解放
 void Game::Release() {
 	dx.pTexture[GAME_BACK]->Release();
 	dx.pTexture[GAME_BACK] = nullptr;

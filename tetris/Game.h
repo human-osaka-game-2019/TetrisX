@@ -26,12 +26,26 @@ private:
 
 	FLOAT BLOCK_x = stage_x;
 	FLOAT BLOCK_y = 400;
-	FLOAT BLOCK_width = 50;
-	FLOAT BLOCK_height = 50;
+	FLOAT BLOCK_width = 36;
+	FLOAT BLOCK_height = 36;
 		   
 	void Loading();
 	void Process();
 	void Release();
+
+	struct Block_Kind {
+
+		FLOAT Straight_BLOCK;
+
+
+		
+
+
+
+
+	};
+
+
 	CustomVertex GameBack_Vertex[4]{
 		{0,0,0,1,0xffffff,0.0f,0.0f},
 		{window_width,0,0,1,0xffffff,1.0f,0.0f},

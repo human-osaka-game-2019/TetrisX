@@ -7,6 +7,7 @@
 #define Width 1280
 #define Height 720 
 
+//‚±‚±o—ˆ‚ê‚Î‚È‚­‚µ‚½‚¢
 DirectX dx;
 Title title;
 Game game;
@@ -113,6 +114,7 @@ void Mainloop(MSG* msg) {
 				dx.pD3Device->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0, 0);
 				dx.pD3Device->BeginScene();
 				dx.UpdateKeyState();
+
 				//‚±‚±‚©‚çƒQ[ƒ€ˆ—
 				switch (scene) {
 				case TITLE:

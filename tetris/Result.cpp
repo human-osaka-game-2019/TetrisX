@@ -1,7 +1,9 @@
 #include "Result.h"
 
+//リザルトのフェーズの宣言
 Result::SCENE_PHASE Phase = Result::LOAD;
 
+//リザルトの
 void Result::Result_Scene() {
 
 	switch (Phase) {
@@ -18,6 +20,7 @@ void Result::Result_Scene() {
 	}
 }
 
+//リザルトのテクスチャの読み込み
 void Result::Loading() {
 
 	D3DXCreateTextureFromFile(
@@ -27,15 +30,20 @@ void Result::Loading() {
 	Phase = PROCESSING;
 }
 
+//リザルトの描画処理
 void Result::Process() {
 
+	//リザルトの描画
 	dx.pD3Device->SetTexture(0, dx.pTexture[RESULT_BACK]);
 	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2,ResultBack_Vertex, sizeof(CustomVertex));
+
+	//エンターでタイトルへ
 	if (dx.GetKeyState(DIK_RETURN)) {
 		Phase = RELEASES;
 	}
 }
 
+//リザルトのテクスチャの解放
 void Result::Release() {
 
 	dx.pTexture[RESULT_BACK]->Release();
