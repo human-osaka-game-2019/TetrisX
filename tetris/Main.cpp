@@ -29,6 +29,8 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline,
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
 
+	dx.All_Release();
+
 	return (int)msg.wParam;
 }
 
@@ -142,8 +144,5 @@ void Mainloop(MSG* msg) {
 			PostQuitMessage(0);
 		}
 	}
-
-	dx.All_Release();
-
 	timeEndPeriod(1);
 }

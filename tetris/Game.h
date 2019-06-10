@@ -37,7 +37,19 @@ private:
 	INT Block_Kind = 0;
 	INT block_kind = 0;
 
-	enum BLOCK_KIND{
+	FLOAT BlockRow = 0;
+	FLOAT BlockCol = 0;
+
+	FLOAT leftposition;
+
+	CustomVertex  GameBlock_Vertex[4]{
+		{BLOCK_x + BLOCK_width * leftposition              ,BLOCK_y + BLOCK_height * BlockRow               ,0,1,0xffffff,0.0f,0.0f},
+		{BLOCK_x + BLOCK_width + BLOCK_width * leftposition,BLOCK_y + BLOCK_height * BlockRow               ,0,1,0xffffff,1.0f,0.0f},
+		{BLOCK_x + BLOCK_width + BLOCK_width * leftposition,BLOCK_y + BLOCK_height + BLOCK_height * BlockRow,0,1,0xffffff,1.0f,1.0f},
+		{BLOCK_x + BLOCK_width * leftposition              ,BLOCK_y + BLOCK_height + BLOCK_height * BlockRow,0,1,0xffffff,0.0f,1.0f}
+	};
+
+	enum BLOCK_KIND {
 		L,
 		I,
 		J,
@@ -46,28 +58,12 @@ private:
 		Z,
 		T
 	};
-
-
 	CustomVertex GameBack_Vertex[4]{
 		{0,0,0,1,0xffffff,0.0f,0.0f},
 		{window_width,0,0,1,0xffffff,1.0f,0.0f},
 		{window_width,window_height,-1,1,0xffffff,1.0f,1.0f},
 		{0,window_height,0,1,0xffffff,0.0f,1.0f}
 		};
-	
-	/*CustomVertex GameStage_Vertex[20][10]{
-			{stage_x,stage_y,0,1,0xffffff,0.0f,0.0f},
-			{stage_x + stage_block_width,stage_y,0,1,0xffffff,1.0f,0.0f},
-			{stage_x + stage_block_width,stage_y + stage_block_hight,0,1,0xffffff,1.0f,1.0f},
-			{stage_x,stage_y + stage_block_hight,0,1,0xffffff,0.0f,1.0f}
-		};*/
-
-	CustomVertex GameBlock_Vertex[231] = {
-		{BLOCK_x,BLOCK_y,0,1,0xffffff,0.0f,0.0f},
-		{BLOCK_x + BLOCK_width,BLOCK_y,0,1,0xffffff,1.0f,0.0f},
-		{BLOCK_x + BLOCK_width,BLOCK_y + BLOCK_height,0,1,0xffffff,1.0f,1.0f},
-		{BLOCK_x,BLOCK_y + BLOCK_height,0,1,0xffffff,0.0f,1.0f},
-	};
 };
 
 #endif
