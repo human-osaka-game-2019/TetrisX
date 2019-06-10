@@ -3,6 +3,7 @@
 
 #include "DirectX.h"
 #include "Main.h"
+#include <time.h>
 
 class Game {
 public:
@@ -16,16 +17,16 @@ public:
 	};
 
 private:
-	FLOAT window_width = 1280;
 	FLOAT window_height = 720;
+	FLOAT window_width = 1280;
 
 	FLOAT stage_x = 400;
 	FLOAT stage_y = 0;
 	FLOAT stage_block_width = 36;
 	FLOAT stage_block_hight = 36;
 
-	FLOAT BLOCK_x = stage_x;
-	FLOAT BLOCK_y = 400;
+	FLOAT BLOCK_x = stage_x + 108;
+	FLOAT BLOCK_y = 0;
 	FLOAT BLOCK_width = 36;
 	FLOAT BLOCK_height = 36;
 		   
@@ -33,16 +34,17 @@ private:
 	void Process();
 	void Release();
 
-	struct Block_Kind {
+	INT Block_Kind = 0;
+	INT block_kind = 0;
 
-		FLOAT Straight_BLOCK;
-
-
-		
-
-
-
-
+	enum BLOCK_KIND{
+		L,
+		I,
+		J,
+		S,
+		O,
+		Z,
+		T
 	};
 
 
