@@ -30,24 +30,46 @@ private:
 	FLOAT BLOCK_width = 36;
 	FLOAT BLOCK_height = 36;
 		   
+	INT Block_Kind = 0;
+	INT block_kind = 0;
+
+	INT BlockRow = 0;
+	INT BlockCol = 0;
+
+	INT color = 0;
+
+	FLOAT Block_tu = 0.5f;
+	FLOAT Block_tv = 0.5f;
+
+	bool exists[20][10];
+
 	void Loading();
 	void Process();
 	void Release();
 
-	INT Block_Kind = 0;
-	INT block_kind = 0;
-
-	FLOAT BlockRow = 0;
-	FLOAT BlockCol = 0;
-
-	FLOAT leftposition;
-
-	CustomVertex  GameBlock_Vertex[4]{
-		{BLOCK_x + BLOCK_width * leftposition              ,BLOCK_y + BLOCK_height * BlockRow               ,0,1,0xffffff,0.0f,0.0f},
-		{BLOCK_x + BLOCK_width + BLOCK_width * leftposition,BLOCK_y + BLOCK_height * BlockRow               ,0,1,0xffffff,1.0f,0.0f},
-		{BLOCK_x + BLOCK_width + BLOCK_width * leftposition,BLOCK_y + BLOCK_height + BLOCK_height * BlockRow,0,1,0xffffff,1.0f,1.0f},
-		{BLOCK_x + BLOCK_width * leftposition              ,BLOCK_y + BLOCK_height + BLOCK_height * BlockRow,0,1,0xffffff,0.0f,1.0f}
+	struct Rect {
+		CustomVertex GameStage_Vertex[4];
 	};
+
+	
+typedef struct BOARD {
+	INT col, row;
+	CustomVertex Rect[20][10];
+};
+
+
+enum COLOR {
+	Red,
+	Blue,
+	Green,
+	Yellow,
+	White,
+	Black,
+	Lightblue
+};
+
+
+	
 
 	enum BLOCK_KIND {
 		L,
