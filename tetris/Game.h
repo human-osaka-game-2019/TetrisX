@@ -20,7 +20,7 @@ private:
 	FLOAT window_height = 720;
 	FLOAT window_width = 1280;
 
-	FLOAT stage_x = 400;
+	FLOAT stage_x = 460;
 	FLOAT stage_y = 0;
 	FLOAT stage_block_width = 36;
 	FLOAT stage_block_hight = 36;
@@ -36,8 +36,6 @@ private:
 	INT BlockRow = 0;
 	INT BlockCol = 0;
 
-	INT color = 0;
-
 	FLOAT Block_tu = 0.5f;
 	FLOAT Block_tv = 0.5f;
 
@@ -47,29 +45,18 @@ private:
 	void Process();
 	void Release();
 
-	struct Rect {
-		CustomVertex GameStage_Vertex[4];
+	enum COLOR {
+		Back,
+		Red,
+		Blue,
+		Green,
+		Yellow,
+		White,
+		Black,
+		Lightblue
 	};
 
-	
-typedef struct BOARD {
-	INT col, row;
-	CustomVertex Rect[20][10];
-};
-
-
-enum COLOR {
-	Red,
-	Blue,
-	Green,
-	Yellow,
-	White,
-	Black,
-	Lightblue
-};
-
-
-	
+	COLOR color = Back;
 
 	enum BLOCK_KIND {
 		L,
@@ -80,6 +67,7 @@ enum COLOR {
 		Z,
 		T
 	};
+
 	CustomVertex GameBack_Vertex[4]{
 		{0,0,0,1,0xffffff,0.0f,0.0f},
 		{window_width,0,0,1,0xffffff,1.0f,0.0f},

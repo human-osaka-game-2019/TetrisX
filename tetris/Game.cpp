@@ -77,55 +77,45 @@ void Game::Process() {
 
 		for (INT col = 0; col < 10; col++) {
 			
-			exists[row][col] = false;
+			switch(color){
 
-			if (BlockRow == 3&&row == 19&&row == BlockRow) {
-				exists[row][col] = true;
-			}
-			
-
-			if (exists[row][col] == true) {
-				//赤ブロック
-				if (color == Red) {
-					Block_tu = 0.0f;
-					Block_tv = 0.0f;
-				}
-				//青ブロック
-				else if (color == Blue) {
-					Block_tu = 0.25f;
-					Block_tv = 00.f;
-				}
-				//緑ブロック
-				else if (color == Green) {
-					Block_tu = 0.5f;
-					Block_tv = 0.0f;
-				}
-				//黄色ブロック
-				else if (color == Yellow) {
-					Block_tu = 0.75;
-					Block_tv = 0.0f;
-				}
-				//白色ブロック
-				else if (color == White) {
-					Block_tu = 0.0f;
-					Block_tv = 0.25f;
-				}
-				//黒色ブロック
-				else if (color == Black) {
-					Block_tu = 0.25f;
-					Block_tv = 0.25f;
-				}
-				//水色ブロック
-				else if (color == Lightblue) {
-					Block_tu = 0.75f;
-					Block_tv = 0.25f;
-				}
-			}
-			else {
+			case Back:
 				Block_tu = 0.75f;
 				Block_tv = 0.75f;
+				break;
+			case Red:
+				Block_tu = 0.0f;
+				Block_tv = 0.0f;
+				break;
+			case Blue:
+				Block_tu = 0.25f;
+				Block_tv = 0.0f;
+				break;
+			case Green:
+				Block_tu = 0.5f;
+				Block_tv = 0.0f;
+				break;
+			case Yellow:
+				Block_tu = 0.75f;
+				Block_tv = 0.0f;
+				break;
+			case White:
+				Block_tu = 0.0f;
+				Block_tv = 0.25;
+				break;
+			case Black:
+				Block_tu = 0.25f;
+				Block_tv = 0.25f;
+				break;
+			case Lightblue:
+				Block_tu = 0.75f;
+				Block_tv = 0.25f;
+				break;
+			default:
+				Block_tu = 0.75f;
+				Block_tv = 0.75f;
+				break;
 			}
-
 
 			CustomVertex GameStage_Vertex[4]{
 				{stage_x + stage_block_width * col                    ,stage_y + stage_block_hight * row                    ,0,1,0xffffff,Block_tu,Block_tv},
@@ -148,7 +138,7 @@ void Game::Process() {
 	if (BLOCK_y + BLOCK_height >= window_height - 108) {
 		//Block_Kind = rand() % 7;
 		//BLOCK_x = stage_x + 108;
-		BLOCK_y = window_height - 36 - 108;
+		BLOCK_y = window_height - 108;
 	}
 	
 		/*ブロック描画*/
