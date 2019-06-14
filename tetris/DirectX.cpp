@@ -1,6 +1,3 @@
-/*
-	‘å‰Y
-*/
 
 #include "DirectX.h"
 
@@ -63,10 +60,6 @@ HRESULT DirectX::InitD3Device(HWND hWnd, const TCHAR * FilePath) {
 	return S_OK;
 }
 
-/*
-	’†“‡
-*/
-
 HRESULT DirectX::InitDinput(HWND hWnd)
 {
 	HRESULT hr;
@@ -117,17 +110,42 @@ void DirectX::InitPresentParameters(HWND hWnd)
 }
 
 void DirectX::UpdateKeyState() {
+
+	BYTE curr_diks[MAX_KEY];
+
+	static BYTE prev_diks[MAX_KEY] = { OFF };
+
 	HRESULT hr = pDxIKeyDevice->Acquire();
+
 	if ((hr == DI_OK) || (hr == S_FALSE)) {
-		pDxIKeyDevice->GetDeviceState(sizeof(KeyState), &KeyState);
+		pDxIKeyDevice->GetDeviceState(sizeof(curr_diks), &curr_diks);
+		for (int i = 0; i < MAX_KEY; i++) {
+			if (curr_diks[i] & MASK_NUM) {
+				if (prev_diks[i] == OFF) {
+					KeyState[i] = PRESS;
+				}
+				else{
+					KeyState[i] = ON;
+				}
+
+				prev_diks[i] = ON;
+			}
+			else{
+				if (prev_diks[i] == ON) {
+					KeyState[i] == RELEASE;
+				}
+				else {
+					KeyState[i] = OFF;
+				}
+				prev_diks[i] = OFF;
+			}
+
+		}
 	}
 }
 
-bool DirectX::GetKeyState(int KeyNumber) {
-	if (KeyState[KeyNumber] & 0x80) {
-		return true;
-	}
-	return false;
+DirectX::KEY_STATE DirectX::GetKeyState(INT diks) {
+	return KeyState[diks];
 }
 
 void DirectX::All_Release() {

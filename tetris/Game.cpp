@@ -44,25 +44,25 @@ void Game::Loading() {
 void Game::Process() {
 
 
-	if (dx.GetKeyState(DIK_UP)) {
+	if (dx.KeyState[DIK_UP] == dx.PRESS) {
 
 		BLOCK_y -= 36;
 
 	}
 	//â∫à⁄ìÆ
-	if (dx.GetKeyState(DIK_DOWN)) {
+	if (dx.KeyState[DIK_DOWN] == dx.PRESS) {
 
 		BLOCK_y += 36;
 
 	}
 	//âEà⁄ìÆ
-	if (dx.GetKeyState(DIK_RIGHT)) {
+	if (dx.KeyState[DIK_RIGHT] == dx.PRESS) {
 
 		BLOCK_x += 36;
 
 	}
 	//ç∂à⁄ìÆ
-	if (dx.GetKeyState(DIK_LEFT)) {
+	if (dx.KeyState[DIK_LEFT] == dx.PRESS) {
 
 		BLOCK_x -= 36;
 
@@ -280,7 +280,7 @@ void Game::Process() {
 	}
 
 
-	if (dx.GetKeyState(DIK_RETURN)) {
+	if (dx.KeyState[DIK_RETURN] == dx.PRESS) {
 		Phase = RELEASES;
 	}
 }

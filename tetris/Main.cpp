@@ -86,8 +86,8 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 		API_NAME,							//クラスの名前
 		API_NAME,							//アプリケーションのタイトル
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE,	//ウィンドウのスタイル
-		CW_USEDEFAULT,						//Xの位置
-		CW_USEDEFAULT,						//Yの位置
+		0,						//Xの位置
+		0,						//Yの位置
 		Width,								//幅
 		Height,								//高さ
 		NULL,								//親ウィンドウのハンドル
@@ -135,14 +135,13 @@ void Mainloop(MSG* msg) {
 				dx.pD3Device->Present(NULL, NULL, NULL, NULL);
 
 				Prev = Curr;
+
+				if (dx.KeyState[DIK_ESCAPE] == dx.PRESS) {
+					PostQuitMessage(0);
+				}
 			}
 		}
 		Sleep(1);
-		if (dx.GetKeyState(DIK_ESCAPE)) {
-
-
-			PostQuitMessage(0);
-		}
 	}
 	timeEndPeriod(1);
 }

@@ -38,7 +38,7 @@ void Result::Process() {
 	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2,ResultBack_Vertex, sizeof(CustomVertex));
 
 	//エンターでタイトルへ
-	if (dx.GetKeyState(DIK_RETURN)) {
+	if (dx.KeyState[DIK_RETURN] == dx.PRESS) {
 		Phase = RELEASES;
 	}
 }

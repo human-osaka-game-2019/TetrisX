@@ -29,9 +29,17 @@ public:
 	//　テクスチャ
 	LPDIRECT3DTEXTURE9 pTexture[TEX_MAX];
 
-	const int  MASK_NUM = 0x80;
+	enum KEY_STATE {
+		PRESS,
+		RELEASE,
+		ON,
+		OFF
+	};
 
-	BYTE KeyState[256];
+	static const int MAX_KEY = 256;
+	const int MASK_NUM = 0x80;
+
+	KEY_STATE KeyState[256];
 
 	HRESULT BuildDxDevice(HWND hWnd, const TCHAR* FilePath);
 
@@ -43,9 +51,10 @@ public:
 
 	void UpdateKeyState();
 
-	bool GetKeyState(int KeyNumber);
+	KEY_STATE GetKeyState(INT diks);
 
 	void All_Release();
+
 
 };
 #endif
