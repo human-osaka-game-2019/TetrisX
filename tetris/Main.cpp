@@ -64,6 +64,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 	return DefWindowProc(hWnd, msg, wp, lp);
 }
 
+void Draw(FLOAT x, FLOAT y,FLOAT tu,FLOAT tv,FLOAT width,FLOAT height,FLOAT tu_width,FLOAT tv_height,INT texture) {
+	CustomVertex customvertex[4]{
+		{x        ,y         ,0,1,0xffffff,tu           ,tv            },
+		{x + width,y         ,0,1,0xffffff,tu + tu_width,tv            },
+		{x + width,y + height,0,1,0xffffff,tu + tu_width,tv + tv_height},
+		{x        ,y + height,0,1,0xffffff,tu           ,tv + tv_height},
+	};
+
+	dx.pD3Device->SetTexture(0, dx.pTexture[texture]);
+	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2,customvertex, sizeof(CustomVertex));
+	
+}
+
 HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 	//ウィンドウクラス
 	WNDCLASS Wndclass;
@@ -103,6 +116,7 @@ void Mainloop(MSG* msg) {
 	DWORD Curr;
 
 	timeBeginPeriod(1);
+
 
 	ZeroMemory(msg, sizeof(msg));
 	while (msg->message != WM_QUIT) {

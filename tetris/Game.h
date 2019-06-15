@@ -16,7 +16,10 @@ public:
 		RELEASES
 	};
 
+	Game::SCENE_PAHSE Phase = Game::LOAD;
+
 private:
+
 	FLOAT window_height = 720;
 	FLOAT window_width = 1280;
 
@@ -26,10 +29,12 @@ private:
 	FLOAT stage_block_hight = 36;
 
 	FLOAT BLOCK_x = stage_x + 108;
-	FLOAT BLOCK_y = 0;
+	FLOAT BLOCK_y = -144;
 	FLOAT BLOCK_width = 36;
 	FLOAT BLOCK_height = 36;
 		   
+	INT g_FrameCount = 0;
+
 	INT Block_Kind = 0;
 	INT block_kind = 0;
 
@@ -38,6 +43,8 @@ private:
 
 	FLOAT Block_tu = 0.5f;
 	FLOAT Block_tv = 0.5f;
+
+	
 
 	bool exists[20][10];
 
@@ -67,13 +74,6 @@ private:
 		Z,
 		T
 	};
-
-	CustomVertex GameBack_Vertex[4]{
-		{0,0,0,1,0xffffff,0.0f,0.0f},
-		{window_width,0,0,1,0xffffff,1.0f,0.0f},
-		{window_width,window_height,-1,1,0xffffff,1.0f,1.0f},
-		{0,window_height,0,1,0xffffff,0.0f,1.0f}
-		};
 };
 
 #endif

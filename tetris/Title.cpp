@@ -33,8 +33,7 @@ void Title::Loading() {
 void Title::Process() {
 
 	//タイトルの描画
-	dx.pD3Device->SetTexture(0, dx.pTexture[TITLE_BACK]);
-	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, TitleBack_Vertex, sizeof(CustomVertex));
+	Draw(0, 0, 0.0f, 0.0f, window_width, window_height,1.0f,1.0f,TITLE_BACK);
 
 	//エンターでゲームへ
 	if (dx.KeyState[DIK_RETURN] == dx.PRESS) {
