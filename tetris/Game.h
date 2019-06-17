@@ -27,6 +27,8 @@ private:
 	//ゲームステージの位置
 	FLOAT stage_x = 460;
 	FLOAT stage_y = 0;
+	FLOAT stage_width = 360;
+	FLOAT stage_height = 720;
 
 	//ステージの1マスの大きさ
 	FLOAT stage_block_width = 36;
@@ -44,8 +46,8 @@ private:
 	INT FrameCount = 0;
 
 	//ブロックの種類
-	INT block_Kind = 0;
-	
+	INT block_kind = 0;
+
 	//移動ブロックの縦と横
 	INT block_row = 0;
 	INT block_col = 0;
@@ -77,7 +79,7 @@ private:
 	COLOR color = Back;
 
 	//ブロックの種類
-	enum block_KIND {
+	enum BLOCK_KIND {
 		L,
 		I,
 		J,
@@ -85,10 +87,6 @@ private:
 		O,
 		Z,
 		T
-	};
-
-	struct BLOCK {
-
 	};
 };
 

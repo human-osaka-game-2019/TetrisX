@@ -32,6 +32,17 @@ void Game::Loading() {
 		_T("Game_Block.png"),
 		&dx.pTexture[GAME_BLOCK]
 	);
+
+	//テトリミノをランダム
+	srand((unsigned int)time(NULL));
+
+	//初期化する関数にする
+	for (INT row = 0; row < 20; row++) {
+		for (INT col = 0; col < 10; col++) {
+			exists[row][col] = false;
+		}
+	}
+
 	Phase = PROCESSING;
 }
 
@@ -66,7 +77,7 @@ void Game::Process() {
 
 	}
 
-	//ゲーム時の背景描画]
+	//ゲーム時の背景描画
 	Draw(0, 0, 0.0f, 0.0f, window_width, window_height, 1.0f, 1.0f, GAME_BACK);
 	
 	//ステージ描画
@@ -114,7 +125,8 @@ void Game::Process() {
 				break;
 			}
 			//二次元配列にし、背景に反映→動いているブロックから情報を持ってくる
-			//座標の特性持った構造体を作
+
+			//座標の特性持った構造体を作る
 			Draw(stage_x + stage_block_width * col, stage_y + stage_block_hight * row, block_tu, block_tv, stage_block_width, stage_block_hight,0.25f,0.25f, GAME_BLOCK);
 
 		}
@@ -127,30 +139,32 @@ void Game::Process() {
 		block_y += 36;
 	}
 
-	//テトリミノをランダム
-	srand((unsigned int)time(NULL));
-
-
 	//下につくと7種類の描画・真ん中に移動処理
 	if (block_y + block_height >= window_height - 36) {
-		block_Kind = rand() % 7;
+		block_kind = rand() % 7;
 		block_x = stage_x + 108;
 		block_y = -144;
 	}
 
 	//当たり判定・左・L
-	if (stage_x <= block_x && (block_Kind == 0 || block_Kind == 1)) {
+	if (block_x <= stage_x - stage_block_width && (block_kind == L ||block_kind == I || block_kind == J || block_kind == O)) {
+		block_x= stage_x - stage_block_width;
+	}
+	else if (block_x <= stage_x && (block_kind == S || block_kind == Z || block_kind == T)) {
 		block_x = stage_x;
 	}
 
 	//当たり判定・右
-	if (stage_x + stage_block_hight * 10 >= block_x + block_width * 4  && block_Kind) {
-		block_x = stage_x + stage_block_hight * 10 - block_width * 4;
+	if (block_x >= (stage_x + stage_width) - stage_block_width * 3 && block_kind != I) {
+		block_x = stage_x + stage_width - stage_block_width * 3;
+	}
+	else if (block_x >= (stage_x + stage_width) - stage_block_width * 2 && block_kind == I) {
+		block_x = (stage_x + stage_width) - stage_block_width * 2;
 	}
 	
-		/*ブロック描画*/
+	/*ブロック描画*/
 
-	if (block_Kind == 0) {
+	if (block_kind == 0) {
 		//Lのブロック
 		for (block_row = 0; block_row < 4; block_row++) {
 
@@ -163,7 +177,7 @@ void Game::Process() {
 			}
 		}
 	}
-	else if (block_Kind == 1) {
+	else if (block_kind == 1) {
 		//Iのブロック
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
@@ -176,7 +190,7 @@ void Game::Process() {
 			}
 		}
 	}
-	else if (block_Kind == 2) {
+	else if (block_kind == 2) {
 		//Jのブロック
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
@@ -188,7 +202,7 @@ void Game::Process() {
 			}
 		}
 	}
-	else if (block_Kind == 3) {
+	else if (block_kind == 3) {
 		//Sのブロック
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
@@ -201,7 +215,7 @@ void Game::Process() {
 			}
 		}
 	}
-	else if (block_Kind == 4) {
+	else if (block_kind == 4) {
 		//Oのブロック
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
@@ -214,7 +228,7 @@ void Game::Process() {
 			}
 		}
 	}
-	else if (block_Kind == 5) {
+	else if (block_kind == 5) {
 		//Zのブロック
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
@@ -227,7 +241,7 @@ void Game::Process() {
 			}
 		}
 	}
-	else if (block_Kind == 6) {
+	else if (block_kind == 6) {
 		//Tのブロック
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
@@ -256,8 +270,6 @@ void Game::Release() {
 	//テクスチャの開放
 	dx.pTexture[GAME_BACK]->Release();
 	dx.pTexture[GAME_BACK] = nullptr;
-	dx.pTexture[GAME_BLOCK]->Release();
-	dx.pTexture[GAME_BLOCK] = nullptr;
 	dx.pTexture[GAME_BLOCK]->Release();
 	dx.pTexture[GAME_BLOCK] = nullptr;
 
