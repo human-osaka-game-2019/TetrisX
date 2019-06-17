@@ -6,6 +6,7 @@
 
 #include "DirectX.h"
 
+
 //カスタムバーテックス
 struct CustomVertex {
 	FLOAT x, y, z, rhw;
@@ -43,5 +44,8 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME);
 
 //メインループ
 void Mainloop(MSG* msg);
+
+//描画関数
+void Draw(FLOAT x, FLOAT y, FLOAT tu, FLOAT tv,FLOAT width,FLOAT height,FLOAT tu_width,FLOAT tv_height,INT texture);
 
 #endif

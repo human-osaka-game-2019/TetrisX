@@ -1,9 +1,6 @@
 #include "Result.h"
 
-//リザルトのフェーズの宣言
-Result::SCENE_PHASE Phase = Result::LOAD;
-
-//リザルトの
+//リザルトのフェーズの移動
 void Result::Result_Scene() {
 
 	switch (Phase) {
@@ -34,8 +31,7 @@ void Result::Loading() {
 void Result::Process() {
 
 	//リザルトの描画
-	dx.pD3Device->SetTexture(0, dx.pTexture[RESULT_BACK]);
-	dx.pD3Device->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2,ResultBack_Vertex, sizeof(CustomVertex));
+	Draw(0, 0, 0.0f, 0.0f, window_width, window_height, 1.0f,1.0f,RESULT_BACK);
 
 	//エンターでタイトルへ
 	if (dx.KeyState[DIK_RETURN] == dx.PRESS) {
