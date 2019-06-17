@@ -45,6 +45,7 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME);
 //ƒƒCƒ“ƒ‹[ƒv
 void Mainloop(MSG* msg);
 
+//•`‰æŠÖ”
 void Draw(FLOAT x, FLOAT y, FLOAT tu, FLOAT tv,FLOAT width,FLOAT height,FLOAT tu_width,FLOAT tv_height,INT texture);
 
 #endif

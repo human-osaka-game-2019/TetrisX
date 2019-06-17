@@ -16,8 +16,12 @@ public:
 	};
 
 private:
+
+	//ウィンドウのサイズ
 	FLOAT window_width = 1280;
 	FLOAT window_height = 720;
+
+	//プロトタイプ宣言
 	void Loading();
 	void Process();
 	void Release(); 

@@ -22,6 +22,8 @@ private:
 
 	FLOAT window_width = 1280;
 	FLOAT window_height = 720;
+
+
 	void Loading();
 	void Process();
 	void Release();

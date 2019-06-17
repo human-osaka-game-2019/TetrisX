@@ -12,8 +12,9 @@ DirectX dx;
 Title title;
 Game game;
 Result result;
-SCENE scene = TITLE;
+SCENE scene = GAME;
  
+//メイン
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow) {
 	HWND hWnd = NULL;
 	const TCHAR API_NAME[] = _T("Tetris_X");
@@ -64,6 +65,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 	return DefWindowProc(hWnd, msg, wp, lp);
 }
 
+//描画関数
 void Draw(FLOAT x, FLOAT y,FLOAT tu,FLOAT tv,FLOAT width,FLOAT height,FLOAT tu_width,FLOAT tv_height,INT texture) {
 	CustomVertex customvertex[4]{
 		{x        ,y         ,0,1,0xffffff,tu           ,tv            },
@@ -77,6 +79,7 @@ void Draw(FLOAT x, FLOAT y,FLOAT tu,FLOAT tv,FLOAT width,FLOAT height,FLOAT tu_w
 	
 }
 
+//
 HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 	//ウィンドウクラス
 	WNDCLASS Wndclass;
@@ -99,8 +102,8 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 		API_NAME,							//クラスの名前
 		API_NAME,							//アプリケーションのタイトル
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE,	//ウィンドウのスタイル
-		0,						//Xの位置
-		0,						//Yの位置
+		0,		            				//Xの位置
+		0,		            				//Yの位置
 		Width,								//幅
 		Height,								//高さ
 		NULL,								//親ウィンドウのハンドル
@@ -110,6 +113,7 @@ HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 	);
 }
 
+//メインループ
 void Mainloop(MSG* msg) {
 
 	DWORD Prev = timeGetTime();

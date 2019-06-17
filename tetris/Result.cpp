@@ -1,5 +1,6 @@
 #include "Result.h"
-//リザルトの
+
+//リザルトのフェーズの移動
 void Result::Result_Scene() {
 
 	switch (Phase) {
