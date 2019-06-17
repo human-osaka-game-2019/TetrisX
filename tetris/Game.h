@@ -63,6 +63,8 @@ private:
 	void Loading();
 	void Process();
 	void Release();
+	void DrawBlocks();
+	void Jugement();
 
 	//
 	enum COLOR {
