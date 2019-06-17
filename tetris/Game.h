@@ -33,26 +33,26 @@ private:
 	FLOAT stage_block_hight = 36;
 
 	//移動ブロックの位置
-	FLOAT BLOCK_x = stage_x + 108;
-	FLOAT BLOCK_y = -144;
+	FLOAT block_x = stage_x + 108;
+	FLOAT block_y = -144;
 
 	//ブロックの1マスの大きさ
-	FLOAT BLOCK_width = 36;
-	FLOAT BLOCK_height = 36;
+	FLOAT block_width = 36;
+	FLOAT block_height = 36;
 		   
 	//フレームを数える
 	INT FrameCount = 0;
 
 	//ブロックの種類
-	INT Block_Kind = 0;
+	INT block_Kind = 0;
 	
 	//移動ブロックの縦と横
-	INT BlockRow = 0;
-	INT BlockCol = 0;
+	INT block_row = 0;
+	INT block_col = 0;
 
 	//ブロックのtuとtv
-	FLOAT Block_tu = 0.5f;
-	FLOAT Block_tv = 0.5f;
+	FLOAT block_tu = 0.5f;
+	FLOAT block_tv = 0.5f;
 	
 	//ステージのフラグ
 	bool exists[20][10];
@@ -77,7 +77,7 @@ private:
 	COLOR color = Back;
 
 	//ブロックの種類
-	enum BLOCK_KIND {
+	enum block_KIND {
 		L,
 		I,
 		J,
