@@ -85,6 +85,8 @@ void Game::Process() {
 
 		for (INT col = 0; col < 10; col++) {
 			
+			board[row][col];
+
 			switch(color){
 
 			case Back:
@@ -133,10 +135,9 @@ void Game::Process() {
 				exists[row][col] = false;
 				break;
 			}
+
 			//二次元配列にし、背景に反映→動いているブロックから情報を持ってくる
-
-
-			//座標の特性持った構造体を作る
+					 	//座標の特性持った構造体を作る
 			Draw(stage_x + stage_block_width * col, stage_y + stage_block_hight * row, block_tu, block_tv, stage_block_width, stage_block_hight,0.25f,0.25f, GAME_BLOCK);
 
 		}
@@ -185,6 +186,11 @@ void Game::Process() {
 		block_y = -144;
 	}
 
+	
+
+
+
+
 	//debug用
 	if (dx.KeyState[DIK_RETURN] == dx.PRESS) {
 		Phase = RELEASES;
@@ -220,9 +226,22 @@ void Game::DrawBlocks() {
 
 					Draw(block_x + block_width * block_col, block_y + block_height * block_row, 0.0f, 0.0f, block_width, block_height, 0.25f, 0.25f, GAME_BLOCK);
 					
+					/*if (board[20][1] == Back) {
+						board[20][1] = Red;
+						board[20][2] = Red;
+						board[19][1] = Red;
+						board[18][1] = Red;
+						exists[20][1] = true;
+						exists[20][1] = true;
+						exists[20][1] = true;
+						exists[20][1] = true;
+					}*/
 				}
 			}
 		}
+	}
+	else if (block_kind == L) {
+
 	}
 	else if (block_kind == I) {
 		//Iのブロック
@@ -319,5 +338,18 @@ void Game::Jugement() {
 	}
 	else if (block_x >= (stage_x + stage_width) - stage_block_width * 2 && block_kind == I) {
 		block_x = (stage_x + stage_width) - stage_block_width * 2;
+	}
+}
+
+/* ブロックを位置情報に従ってフィールドにコピーする */
+void PieceToField(void)
+{
+	for (int y = 0; y < PIECE_HEIGHT; y++) {
+		for (int x = 0; x < PIECE_WIDTH; x++) {		// ↓(location.y)+y>=0 は添字の有効性を調べている
+			if (piece[x][y] && (location.y) + y >= 0) {
+				field[(location.x) + x][(location.y) + y] = piece[x][y];
+				fColor[(location.x) + x][(location.y) + y] = pColor[x][y];
+			}
+		}
 	}
 }

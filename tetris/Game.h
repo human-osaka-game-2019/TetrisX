@@ -55,9 +55,6 @@ private:
 	//ブロックのtuとtv
 	FLOAT block_tu = 0.5f;
 	FLOAT block_tv = 0.5f;
-	
-	//ステージのフラグ
-	bool exists[20][10];
 
 	//関数のプロトタイプ宣言
 	void Loading();
@@ -75,7 +72,8 @@ private:
 		Yellow,
 		White,
 		Black,
-		Lightblue
+		Lightblue,
+		Wall,
 	};
 
 	COLOR color = Back;
@@ -90,6 +88,66 @@ private:
 		Z,
 		T
 	};
+
+	INT board[21][12] = {
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
+	{Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall},
+	};
+
+	//ステージのフラグ
+	bool exists[21][12] = {
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,false,false,false,false,false,false,false,false,false,false,true},
+		{true,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true},
+	};
+
+	// ピース管理構造体
+	typedef struct tagPIECE
+	{
+		//bool block[block_row][block_col]; // true：ブロックあり / false：なし
+		BYTE image;         // ブロックのビットマップ番号
+		char x, y;           // 左上のセル座標
+	}PIECE;
+
+	//現在移動中のブロックの位置 
+	PIECE location = { 0,0 };
+
 };
 
 #endif
