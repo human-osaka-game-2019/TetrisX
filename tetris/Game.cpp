@@ -341,15 +341,15 @@ void Game::Jugement() {
 	}
 }
 
-/* ブロックを位置情報に従ってフィールドにコピーする */
-void PieceToField(void)
-{
-	for (int y = 0; y < PIECE_HEIGHT; y++) {
-		for (int x = 0; x < PIECE_WIDTH; x++) {		// ↓(location.y)+y>=0 は添字の有効性を調べている
-			if (piece[x][y] && (location.y) + y >= 0) {
-				field[(location.x) + x][(location.y) + y] = piece[x][y];
-				fColor[(location.x) + x][(location.y) + y] = pColor[x][y];
-			}
-		}
-	}
-}
+//* ブロックを位置情報に従ってフィールドにコピーする */
+//void GAME::PIECE::PieceToField()
+//{
+//	for (int y = 0; y < PIECE_HEIGHT; y++) {
+//		for (int x = 0; x < PIECE_WIDTH; x++) {		// ↓(location.y)+y>=0 は添字の有効性を調べている
+//			if (piece[x][y] && (location.y) + y >= 0) {
+//				field[(location.x) + x][(location.y) + y] = piece[x][y];
+//				fColor[(location.x) + x][(location.y) + y] = pColor[x][y];
+//			}
+//		}
+//	}
+//}
