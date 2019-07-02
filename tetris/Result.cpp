@@ -42,7 +42,11 @@ void Result::Process() {
 //リザルトのテクスチャの解放
 void Result::Release() {
 
-	dx.pTexture[RESULT_BACK]->Release();
-	dx.pTexture[RESULT_BACK] = nullptr;
+	for (int i = 0; i < TEX_MAX;i++) {
+		if (dx.pTexture[i] != nullptr) {
+			dx.pTexture[i]->Release();
+			dx.pTexture[i] = nullptr;
+		}
+	}
 	scene = TITLE;
 }

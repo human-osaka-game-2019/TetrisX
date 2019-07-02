@@ -44,8 +44,12 @@ void Title::Process() {
 //タイトルのテクスチャの解放
 void Title::Release() {
 
-	dx.pTexture[TITLE_BACK]->Release();
-	dx.pTexture[TITLE_BACK] = nullptr;
+	for (int i = 0; i < TEX_MAX; i++) {
+		if (dx.pTexture[i] != nullptr) {
+			dx.pTexture[i]->Release();
+			dx.pTexture[i] = nullptr;
+		}
+	}
 	scene = GAME;
 
 }
