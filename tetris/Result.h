@@ -1,4 +1,4 @@
-#ifndef RESULT_H
+ï»¿#ifndef RESULT_H
 #define RESULT_H
 
 #include "DirectX.h"
@@ -15,7 +15,7 @@ public:
 		RELEASES
 	};
 
-	//ƒŠƒUƒ‹ƒg‚ÌƒtƒF[ƒY‚ÌéŒ¾
+	//ãƒªã‚¶ãƒ«ãƒˆã®ãƒ•ã‚§ãƒ¼ã‚ºã®å®£è¨€
 	Result::SCENE_PHASE Phase = Result::LOAD;
 
 private:

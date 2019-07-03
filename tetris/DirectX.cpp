@@ -1,4 +1,4 @@
-
+ï»¿
 #include "DirectX.h"
 
 #pragma comment (lib,"winmm.lib")
@@ -20,7 +20,7 @@ HRESULT DirectX::BuildDxDevice(HWND hWnd, const TCHAR* filepath)
 	pDirect3D = Direct3DCreate9(D3D_SDK_VERSION);
 
 	if (pDirect3D == NULL) {
-		MessageBox(0, _T("Direct3D‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½"), NULL, MB_OK);
+		MessageBox(0, _T("Direct3Dã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), NULL, MB_OK);
 		return E_FAIL;
 	}
 
@@ -33,7 +33,7 @@ HRESULT DirectX::BuildDxDevice(HWND hWnd, const TCHAR* filepath)
 
 HRESULT DirectX::InitD3Device(HWND hWnd, const TCHAR * FilePath) {
 	if (NULL == (pDirect3D = Direct3DCreate9(D3D_SDK_VERSION))) {
-		MessageBox(0, _T("Direct3D‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½"), _T(""), MB_OK);
+		MessageBox(0, _T("Direct3Dã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), _T(""), MB_OK);
 		return E_FAIL;
 	}
 
@@ -43,18 +43,18 @@ HRESULT DirectX::InitD3Device(HWND hWnd, const TCHAR * FilePath) {
 		D3DCREATE_MIXED_VERTEXPROCESSING,
 		&D3dPresentParameters, &pD3Device))) {
 
-		MessageBox(0, _T("HALƒ‚[ƒh‚ÅDIRECT3DƒfƒoƒCƒX‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½\nREFƒ‚[ƒh‚ÅÄs‚µ‚Ü‚·"), NULL, MB_OK);
+		MessageBox(0, _T("HALãƒ¢ãƒ¼ãƒ‰ã§DIRECT3Dãƒ‡ãƒã‚¤ã‚¹ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ\nREFãƒ¢ãƒ¼ãƒ‰ã§å†è©¦è¡Œã—ã¾ã™"), NULL, MB_OK);
 		if (FAILED(pDirect3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_REF, hWnd,
 			D3DCREATE_MIXED_VERTEXPROCESSING,
 			&D3dPresentParameters, &pD3Device))) {
-			MessageBox(0, _T("DIRECT3DƒfƒoƒCƒX‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½"), NULL, MB_OK);
+			MessageBox(0, _T("DIRECT3Dãƒ‡ãƒã‚¤ã‚¹ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), NULL, MB_OK);
 			return E_FAIL;
 		}
 	}
 	if (FAILED(D3DXCreateTextureFromFileEx(pD3Device, FilePath, 100, 100, 0, 0, D3DFMT_UNKNOWN,
 		D3DPOOL_DEFAULT, D3DX_FILTER_NONE, D3DX_DEFAULT,
 		0xff000000, NULL, NULL, &pTexture[0]))) {
-		MessageBox(0, _T("ƒeƒNƒXƒ`ƒƒ‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½"), _T(""), MB_OK);
+		MessageBox(0, _T("ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), _T(""), MB_OK);
 		return E_FAIL;
 	}
 	return S_OK;
@@ -66,7 +66,7 @@ HRESULT DirectX::InitDinput(HWND hWnd)
 
 	if (FAILED(hr = DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (VOID * *)& pDinput, NULL)))
 	{
-		MessageBox(0, _T("DirectInput‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½"), NULL, MB_OK);
+		MessageBox(0, _T("DirectInputã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ"), NULL, MB_OK);
 		return hr;
 	}
 

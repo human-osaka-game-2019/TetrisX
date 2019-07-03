@@ -1,4 +1,4 @@
-#ifndef MAIN_H
+ï»¿#ifndef MAIN_H
 #define MAIN_H
 
 #include <windows.h>
@@ -7,7 +7,7 @@
 #include "DirectX.h"
 
 
-//ƒJƒXƒ^ƒ€ƒo[ƒeƒbƒNƒX
+//ã‚«ã‚¹ã‚¿ãƒ ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹
 struct CustomVertex {
 	FLOAT x, y, z, rhw;
 	DWORD color;
@@ -32,19 +32,19 @@ enum SCENE {
 extern DirectX dx;
 extern SCENE scene;
 
-//WinMainŠÖ”
+//WinMainé–¢æ•°
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow);
 
-//ƒEƒBƒ“ƒhƒvƒƒV[ƒWƒƒ‚Ì¶¬
+//ã‚¦ã‚£ãƒ³ãƒ‰ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£ã®ç”Ÿæˆ
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-//windowì¬
+//windowä½œæˆ
 HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME);
 
-//ƒƒCƒ“ƒ‹[ƒv
+//ãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒ—
 void Mainloop(MSG* msg);
 
-//•`‰æŠÖ”
+//æç”»é–¢æ•°
 void Draw(FLOAT x, FLOAT y, FLOAT tu, FLOAT tv,FLOAT width,FLOAT height,FLOAT tu_width,FLOAT tv_height,INT texture);
 
 #endif

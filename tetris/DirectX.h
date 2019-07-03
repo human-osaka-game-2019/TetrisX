@@ -1,4 +1,4 @@
-#ifndef DirectX_H
+ï»¿#ifndef DirectX_H
 #define DirectX_H
 
 #include <windows.h>
@@ -11,22 +11,22 @@
 
 class DirectX {
 public:
-	//@Direct3D‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒX
+	//ã€€Direct3Dã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
 	LPDIRECT3D9 pDirect3D;
 
-	//@Direct3D‚ÌƒfƒoƒCƒX
+	//ã€€Direct3Dã®ãƒ‡ãƒã‚¤ã‚¹
 	IDirect3DDevice9* pD3Device;
 
-	//@ƒEƒBƒ“ƒhƒE‚Ìİ’è
+	//ã€€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®è¨­å®š
 	D3DPRESENT_PARAMETERS D3dPresentParameters;
 	
-	//@DirectInput‚ÌƒL[ƒ{[ƒhƒfƒoƒCƒX
+	//ã€€DirectInputã®ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ãƒ‡ãƒã‚¤ã‚¹
 	LPDIRECTINPUTDEVICE8 pDxIKeyDevice;
 
-	//@DirectInput‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒX
+	//ã€€DirectInputã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
 	LPDIRECTINPUT8 pDinput;
 
-	//@ƒeƒNƒXƒ`ƒƒ
+	//ã€€ãƒ†ã‚¯ã‚¹ãƒãƒ£
 	LPDIRECT3DTEXTURE9 pTexture[TEX_MAX];
 
 	enum KEY_STATE {

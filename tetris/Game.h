@@ -1,4 +1,4 @@
-#ifndef GAME_H
+ï»¿#ifndef GAME_H
 #define GAME_H
 
 #include "DirectX.h"
@@ -20,43 +20,43 @@ public:
 
 private:
 
-	//ƒEƒBƒ“ƒhƒE‚ÌƒTƒCƒY
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚µã‚¤ã‚º
 	FLOAT window_height = 720;
 	FLOAT window_width = 1280;
 
-	//ƒQ[ƒ€ƒXƒe[ƒW‚ÌˆÊ’u
+	//ã‚²ãƒ¼ãƒ ã‚¹ãƒ†ãƒ¼ã‚¸ã®ä½ç½®
 	FLOAT stage_x = 460;
 	FLOAT stage_y = 0;
 	FLOAT stage_width = 360;
 	FLOAT stage_height = 720;
 
-	//ƒXƒe[ƒW‚Ì1ƒ}ƒX‚Ì‘å‚«‚³
+	//ã‚¹ãƒ†ãƒ¼ã‚¸ã®1ãƒã‚¹ã®å¤§ãã•
 	FLOAT stage_block_width = 36;
 	FLOAT stage_block_hight = 36;
 
-	//ˆÚ“®ƒuƒƒbƒN‚ÌˆÊ’u
+	//ç§»å‹•ãƒ–ãƒ­ãƒƒã‚¯ã®ä½ç½®
 	FLOAT block_x = stage_x + 108;
 	FLOAT block_y = -144;
 
-	//ƒuƒƒbƒN‚Ì1ƒ}ƒX‚Ì‘å‚«‚³
+	//ãƒ–ãƒ­ãƒƒã‚¯ã®1ãƒã‚¹ã®å¤§ãã•
 	FLOAT block_width = 36;
 	FLOAT block_height = 36;
 		   
-	//ƒtƒŒ[ƒ€‚ğ”‚¦‚é
+	//ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’æ•°ãˆã‚‹
 	INT FrameCount = 0;
 
-	//ƒuƒƒbƒN‚Ìí—Ş
+	//ãƒ–ãƒ­ãƒƒã‚¯ã®ç¨®é¡
 	INT block_kind = 0;
 
-	//ˆÚ“®ƒuƒƒbƒN‚Ìc‚Æ‰¡
+	//ç§»å‹•ãƒ–ãƒ­ãƒƒã‚¯ã®ç¸¦ã¨æ¨ª
 	INT block_row = 0;
 	INT block_col = 0;
 
-	//ƒuƒƒbƒN‚Ìtu‚Ætv
+	//ãƒ–ãƒ­ãƒƒã‚¯ã®tuã¨tv
 	FLOAT block_tu = 0.5f;
 	FLOAT block_tv = 0.5f;
 
-	//ŠÖ”‚Ìƒvƒƒgƒ^ƒCƒvéŒ¾
+	//é–¢æ•°ã®ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
 	void Loading();
 	void Process();
 	void Release();
@@ -78,7 +78,7 @@ private:
 
 	COLOR color = Back;
 
-	//ƒuƒƒbƒN‚Ìí—Ş
+	//ãƒ–ãƒ­ãƒƒã‚¯ã®ç¨®é¡
 	enum BLOCK_KIND {
 		L,
 		I,
@@ -112,7 +112,7 @@ private:
 	{Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall},
 	};
 
-	//ƒXƒe[ƒW‚Ìƒtƒ‰ƒO
+	//ã‚¹ãƒ†ãƒ¼ã‚¸ã®ãƒ•ãƒ©ã‚°
 	bool exists[21][12] = {
 		{true,false,false,false,false,false,false,false,false,false,false,true},
 		{true,false,false,false,false,false,false,false,false,false,false,true},
@@ -137,15 +137,15 @@ private:
 		{true,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true},
 	};
 
-	// ƒs[ƒXŠÇ—\‘¢‘Ì
+	// ãƒ”ãƒ¼ã‚¹ç®¡ç†æ§‹é€ ä½“
 	typedef struct tagPIECE
 	{
-		//bool block[block_row][block_col]; // trueFƒuƒƒbƒN‚ ‚è / falseF‚È‚µ
-		BYTE image;         // ƒuƒƒbƒN‚Ìƒrƒbƒgƒ}ƒbƒv”Ô†
-		char x, y;           // ¶ã‚ÌƒZƒ‹À•W
+		//bool block[block_row][block_col]; // trueï¼šãƒ–ãƒ­ãƒƒã‚¯ã‚ã‚Š / falseï¼šãªã—
+		BYTE image;         // ãƒ–ãƒ­ãƒƒã‚¯ã®ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ç•ªå·
+		char x, y;           // å·¦ä¸Šã®ã‚»ãƒ«åº§æ¨™
 	}PIECE;
 
-	//Œ»İˆÚ“®’†‚ÌƒuƒƒbƒN‚ÌˆÊ’u 
+	//ç¾åœ¨ç§»å‹•ä¸­ã®ãƒ–ãƒ­ãƒƒã‚¯ã®ä½ç½® 
 	PIECE location = { 0,0 };
 
 };

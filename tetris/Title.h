@@ -1,4 +1,4 @@
-#ifndef TITLE_H
+ï»¿#ifndef TITLE_H
 #define TITLE_H
 
 #include "DirectX.h"
@@ -17,11 +17,11 @@ public:
 
 private:
 
-	//ƒEƒBƒ“ƒhƒE‚ÌƒTƒCƒY
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚µã‚¤ã‚º
 	FLOAT window_width = 1280;
 	FLOAT window_height = 720;
 
-	//ƒvƒƒgƒ^ƒCƒvéŒ¾
+	//ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
 	void Loading();
 	void Process();
 	void Release(); 

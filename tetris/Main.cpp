@@ -1,4 +1,4 @@
-#include "DirectX.h"
+ï»¿#include "DirectX.h"
 #include "Main.h"
 #include "Title.h"
 #include "Game.h"
@@ -7,18 +7,18 @@
 #define Width 1280
 #define Height 720 
 
-//‚±‚±o—ˆ‚ê‚Î‚È‚­‚µ‚½‚¢
+//ã“ã“å‡ºæ¥ã‚Œã°ãªãã—ãŸã„
 DirectX dx;
 Title title;
 Game game;
 Result result;
 SCENE scene = GAME;
  
-//ƒƒCƒ“
+//ãƒ¡ã‚¤ãƒ³
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline, int nCmdShow) {
 	HWND hWnd = NULL;
 	const TCHAR API_NAME[] = _T("Tetris_X");
-	//ƒƒbƒZ[ƒW
+	//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 	MSG msg;
 	hWnd = GenerateWindow(&hWnd, &hInstance, API_NAME);
 	dx.BuildDxDevice(hWnd,_T("Blank.jpg"));
@@ -26,7 +26,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline,
 	Mainloop(&msg);
 
 
-	//ƒEƒBƒ“ƒhƒEî•ñ‚ð‚Ý‚ÄXV
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦æƒ…å ±ã‚’ã¿ã¦æ›´æ–°
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
 
@@ -35,25 +35,25 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdline,
 	return (int)msg.wParam;
 }
 
-//ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ
+//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 {
-	//ƒƒbƒZ[ƒW•Ê‚Ìˆ—
+	//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸åˆ¥ã®å‡¦ç†
 	switch (msg)
 	{
-		//ƒEƒBƒ“ƒhƒE‚ª”j‰ó‚³‚ê‚½‚Æ‚«‚ÌƒƒbƒZ[ƒW
+		//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒç ´å£Šã•ã‚ŒãŸã¨ãã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 	case WM_DESTROY:
-		//•Â‚¶‚éƒƒbƒZ[ƒW‚ð‘—‚é
+		//é–‰ã˜ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ã‚‹
 		PostQuitMessage(0);
 		return 0;
-		//ƒ†[ƒU[‚ªƒƒjƒ…[‚©ALTƒL[‚Æ‰½‚©‚ð‰Ÿ‚µ‚½‚Æ‚«
+		//ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‹ALTã‚­ãƒ¼ã¨ä½•ã‹ã‚’æŠ¼ã—ãŸã¨ã
 	case WM_SYSKEYDOWN:
 		switch (wp)
 		{
 		case VK_RETURN:
 			return 0;
 		case VK_F4:
-			//•Â‚¶‚éƒƒbƒZ\ƒW
+			//é–‰ã˜ã‚‹ãƒ¡ãƒƒã‚»â€•ã‚¸
 			PostMessage(hWnd, WM_CLOSE, 0, 0);
 			return 0;
 		default:
@@ -61,11 +61,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 		}
 		return 0;
 	}
-	//DefaultWindowProcedure‚ð•Ô‚·(ƒfƒtƒHƒ‹ƒg)
+	//DefaultWindowProcedureã‚’è¿”ã™(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ)
 	return DefWindowProc(hWnd, msg, wp, lp);
 }
 
-//•`‰æŠÖ”
+//æç”»é–¢æ•°
 void Draw(FLOAT x, FLOAT y,FLOAT tu,FLOAT tv,FLOAT width,FLOAT height,FLOAT tu_width,FLOAT tv_height,INT texture) {
 	CustomVertex customvertex[4]{
 		{x        ,y         ,0,1,0xffffff,tu           ,tv            },
@@ -81,39 +81,39 @@ void Draw(FLOAT x, FLOAT y,FLOAT tu,FLOAT tv,FLOAT width,FLOAT height,FLOAT tu_w
 
 //
 HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
-	//ƒEƒBƒ“ƒhƒEƒNƒ‰ƒX
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¯ãƒ©ã‚¹
 	WNDCLASS Wndclass;
-	Wndclass.style = CS_HREDRAW | CS_VREDRAW; //ƒEƒBƒ“ƒhƒEƒXƒ^ƒCƒ‹
-	Wndclass.lpfnWndProc = WndProc; //ƒEƒBƒ“ƒhƒEƒvƒƒV[ƒWƒƒ
-	Wndclass.cbClsExtra = 0; //ƒƒ‚ƒŠŠm•Û
-	Wndclass.cbWndExtra = 0; //ƒƒ‚ƒŠŠm•Û
-	Wndclass.hInstance = *hInstance;	//ƒnƒ“ƒhƒ‹ƒCƒ“ƒXƒ^ƒ“ƒX
-	Wndclass.hIcon = LoadIcon(NULL, IDI_APPLICATION); //ƒAƒCƒRƒ“
-	Wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);	//ƒJ[ƒ\ƒ‹
-	Wndclass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH); //”wŒi‚Ìƒuƒ‰ƒV,F
-	Wndclass.lpszMenuName = NULL; //ƒƒjƒ…[‰æ–Ê‚Ì–¼‘O
-	Wndclass.lpszClassName = API_NAME; //ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ì–¼‘O
+	Wndclass.style = CS_HREDRAW | CS_VREDRAW; //ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¹ã‚¿ã‚¤ãƒ«
+	Wndclass.lpfnWndProc = WndProc; //ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£
+	Wndclass.cbClsExtra = 0; //ãƒ¡ãƒ¢ãƒªç¢ºä¿
+	Wndclass.cbWndExtra = 0; //ãƒ¡ãƒ¢ãƒªç¢ºä¿
+	Wndclass.hInstance = *hInstance;	//ãƒãƒ³ãƒ‰ãƒ«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	Wndclass.hIcon = LoadIcon(NULL, IDI_APPLICATION); //ã‚¢ã‚¤ã‚³ãƒ³
+	Wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);	//ã‚«ãƒ¼ã‚½ãƒ«
+	Wndclass.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH); //èƒŒæ™¯ã®ãƒ–ãƒ©ã‚·,è‰²
+	Wndclass.lpszMenuName = NULL; //ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”»é¢ã®åå‰
+	Wndclass.lpszClassName = API_NAME; //ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®åå‰
 
-	//ƒEƒBƒ“ƒhƒEƒNƒ‰ƒX‚Ì“o˜^
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¯ãƒ©ã‚¹ã®ç™»éŒ²
 	RegisterClass(&Wndclass);
 
-	//ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹‚ÉcreatewindowŠÖ”‚Åì‚Á‚½î•ñ‚ð‘ã“ü
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«ã«createwindowé–¢æ•°ã§ä½œã£ãŸæƒ…å ±ã‚’ä»£å…¥
 	return *hWnd = CreateWindow(
-		API_NAME,							//ƒNƒ‰ƒX‚Ì–¼‘O
-		API_NAME,							//ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ìƒ^ƒCƒgƒ‹
-		WS_OVERLAPPEDWINDOW | WS_VISIBLE,	//ƒEƒBƒ“ƒhƒE‚ÌƒXƒ^ƒCƒ‹
-		0,		            				//X‚ÌˆÊ’u
-		0,		            				//Y‚ÌˆÊ’u
-		Width,								//•
-		Height,								//‚‚³
-		NULL,								//eƒEƒBƒ“ƒhƒE‚Ìƒnƒ“ƒhƒ‹
-		NULL,								//ƒƒjƒ…[‚Ìƒnƒ“ƒhƒ‹
-		*hInstance,							//ƒCƒ“ƒXƒ^ƒ“ƒXƒnƒ“ƒhƒ‹
-		NULL								//ƒƒbƒZ[ƒW‚É“n‚³‚ê‚éƒpƒ‰ƒ[ƒ^
+		API_NAME,							//ã‚¯ãƒ©ã‚¹ã®åå‰
+		API_NAME,							//ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚¿ã‚¤ãƒˆãƒ«
+		WS_OVERLAPPEDWINDOW | WS_VISIBLE,	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚¹ã‚¿ã‚¤ãƒ«
+		0,		            				//Xã®ä½ç½®
+		0,		            				//Yã®ä½ç½®
+		Width,								//å¹…
+		Height,								//é«˜ã•
+		NULL,								//è¦ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ãƒãƒ³ãƒ‰ãƒ«
+		NULL,								//ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®ãƒãƒ³ãƒ‰ãƒ«
+		*hInstance,							//ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãƒãƒ³ãƒ‰ãƒ«
+		NULL								//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«æ¸¡ã•ã‚Œã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 	);
 }
 
-//ƒƒCƒ“ƒ‹[ƒv
+//ãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒ—
 void Mainloop(MSG* msg) {
 
 	DWORD Prev = timeGetTime();
@@ -135,7 +135,7 @@ void Mainloop(MSG* msg) {
 				dx.pD3Device->BeginScene();
 				dx.UpdateKeyState();
 
-				//‚±‚±‚©‚çƒQ[ƒ€ˆ—
+				//ã“ã“ã‹ã‚‰ã‚²ãƒ¼ãƒ å‡¦ç†
 				switch (scene) {
 				case TITLE:
 					title.Title_Scene();
@@ -147,7 +147,7 @@ void Mainloop(MSG* msg) {
 					result.Result_Scene();
 					break;
 				default:
-					MessageBox(0, _T("ƒV[ƒ“Ý’è‚ª‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"), NULL, MB_OK);
+					MessageBox(0, _T("ã‚·ãƒ¼ãƒ³è¨­å®šãŒã•ã‚Œã¦ã„ã¾ã›ã‚“"), NULL, MB_OK);
 				}
 				dx.pD3Device->EndScene();
 				dx.pD3Device->Present(NULL, NULL, NULL, NULL);

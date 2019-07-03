@@ -1,6 +1,6 @@
-#include "Result.h"
+ï»¿#include "Result.h"
 
-//ƒŠƒUƒ‹ƒg‚ÌƒtƒF[ƒY‚ÌˆÚ“®
+//ãƒªã‚¶ãƒ«ãƒˆã®ãƒ•ã‚§ãƒ¼ã‚ºã®ç§»å‹•
 void Result::Result_Scene() {
 
 	switch (Phase) {
@@ -17,7 +17,7 @@ void Result::Result_Scene() {
 	}
 }
 
-//ƒŠƒUƒ‹ƒg‚ÌƒeƒNƒXƒ`ƒƒ‚Ì“Ç‚İ‚İ
+//ãƒªã‚¶ãƒ«ãƒˆã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®èª­ã¿è¾¼ã¿
 void Result::Loading() {
 
 	D3DXCreateTextureFromFile(
@@ -27,19 +27,19 @@ void Result::Loading() {
 	Phase = PROCESSING;
 }
 
-//ƒŠƒUƒ‹ƒg‚Ì•`‰æˆ—
+//ãƒªã‚¶ãƒ«ãƒˆã®æç”»å‡¦ç†
 void Result::Process() {
 
-	//ƒŠƒUƒ‹ƒg‚Ì•`‰æ
+	//ãƒªã‚¶ãƒ«ãƒˆã®æç”»
 	Draw(0, 0, 0.0f, 0.0f, window_width, window_height, 1.0f,1.0f,RESULT_BACK);
 
-	//ƒGƒ“ƒ^[‚Åƒ^ƒCƒgƒ‹‚Ö
+	//ã‚¨ãƒ³ã‚¿ãƒ¼ã§ã‚¿ã‚¤ãƒˆãƒ«ã¸
 	if (dx.KeyState[DIK_RETURN] == dx.PRESS) {
 		Phase = RELEASES;
 	}
 }
 
-//ƒŠƒUƒ‹ƒg‚ÌƒeƒNƒXƒ`ƒƒ‚Ì‰ğ•ú
+//ãƒªã‚¶ãƒ«ãƒˆã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®è§£æ”¾
 void Result::Release() {
 
 	for (int i = 0; i < TEX_MAX;i++) {

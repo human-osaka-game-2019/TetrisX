@@ -1,9 +1,9 @@
-
+ï»¿
 #include "Game.h"
 
 Game::SCENE_PAHSE Phase = Game::LOAD;
 
-//ƒQ[ƒ€‚ÌƒtƒF[ƒY‚ÌˆÚ“®
+//ã‚²ãƒ¼ãƒ ã®ãƒ•ã‚§ãƒ¼ã‚ºã®ç§»å‹•
 void Game::Game_Scene() {
 
 	switch (Phase) {
@@ -20,7 +20,7 @@ void Game::Game_Scene() {
 	}
 }
 
-//ƒQ[ƒ€‚ÌƒeƒNƒXƒ`ƒƒ‚Ì“Ç‚İ‚İ
+//ã‚²ãƒ¼ãƒ ã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®èª­ã¿è¾¼ã¿
 void Game::Loading() {
 	D3DXCreateTextureFromFile(
 		dx.pD3Device,
@@ -33,10 +33,10 @@ void Game::Loading() {
 		&dx.pTexture[GAME_BLOCK]
 	);
 
-	//ƒeƒgƒŠƒ~ƒm‚ğƒ‰ƒ“ƒ_ƒ€
+	//ãƒ†ãƒˆãƒªãƒŸãƒã‚’ãƒ©ãƒ³ãƒ€ãƒ 
 	srand((unsigned int)time(NULL));
 
-	//‰Šú‰»‚·‚éŠÖ”‚É‚·‚é
+	//åˆæœŸåŒ–ã™ã‚‹é–¢æ•°ã«ã™ã‚‹
 	for (INT row = 0; row < 20; row++) {
 		for (INT col = 0; col < 10; col++) {
 			exists[row][col] = false;
@@ -46,41 +46,41 @@ void Game::Loading() {
 	Phase = PROCESSING;
 }
 
-//ƒQ[ƒ€‚Ì•`‰æ‚Æ“®‚«
+//ã‚²ãƒ¼ãƒ ã®æç”»ã¨å‹•ã
 void Game::Process() {
 
 	FrameCount++;
 
 	
-	//ˆêu‚Å‰º‚É—‚Æ‚·ˆ—
+	//ä¸€ç¬ã§ä¸‹ã«è½ã¨ã™å‡¦ç†
 	if (dx.KeyState[DIK_UP] == dx.PRESS) {
 
 		block_y -= 36;
 
 	}
-	//‰ºˆÚ“®
+	//ä¸‹ç§»å‹•
 	if (dx.KeyState[DIK_DOWN] == dx.PRESS) {
 
 		block_y += 36;
 
 	}
-	//‰EˆÚ“®
+	//å³ç§»å‹•
 	if (dx.KeyState[DIK_RIGHT] == dx.PRESS) {
 
 		block_x += 36;
 
 	}
-	//¶ˆÚ“®
+	//å·¦ç§»å‹•
 	if (dx.KeyState[DIK_LEFT] == dx.PRESS) {
 
 		block_x -= 36;
 
 	}
 
-	//ƒQ[ƒ€‚Ì”wŒi•`‰æ
+	//ã‚²ãƒ¼ãƒ æ™‚ã®èƒŒæ™¯æç”»
 	Draw(0, 0, 0.0f, 0.0f, window_width, window_height, 1.0f, 1.0f, GAME_BACK);
 	
-	//ƒXƒe[ƒW•`‰æ
+	//ã‚¹ãƒ†ãƒ¼ã‚¸æç”»
 	for (INT row = 0; row < 20; row++) {
 
 		for (INT col = 0; col < 10; col++) {
@@ -136,27 +136,27 @@ void Game::Process() {
 				break;
 			}
 
-			//“ñŸŒ³”z—ñ‚É‚µA”wŒi‚É”½‰f¨“®‚¢‚Ä‚¢‚éƒuƒƒbƒN‚©‚çî•ñ‚ğ‚Á‚Ä‚­‚é
-					 	//À•W‚Ì“Á«‚Á‚½\‘¢‘Ì‚ğì‚é
+			//äºŒæ¬¡å…ƒé…åˆ—ã«ã—ã€èƒŒæ™¯ã«åæ˜ â†’å‹•ã„ã¦ã„ã‚‹ãƒ–ãƒ­ãƒƒã‚¯ã‹ã‚‰æƒ…å ±ã‚’æŒã£ã¦ãã‚‹
+					 	//åº§æ¨™ã®ç‰¹æ€§æŒã£ãŸæ§‹é€ ä½“ã‚’ä½œã‚‹
 			Draw(stage_x + stage_block_width * col, stage_y + stage_block_hight * row, block_tu, block_tv, stage_block_width, stage_block_hight,0.25f,0.25f, GAME_BLOCK);
 
 		}
 	}
 
-	//“–‚½‚è”»’è
+	//å½“ãŸã‚Šåˆ¤å®š
 	Jugement();
 
-	//ƒuƒƒbƒN•`‰æ
+	//ãƒ–ãƒ­ãƒƒã‚¯æç”»
 	DrawBlocks();
 
-	//d—Í
+	//é‡åŠ›
 	if (FrameCount == 60){
-		// 1•b‚½‚Á‚½
+		// 1ç§’ãŸã£ãŸ
 		FrameCount = 0;
 		block_y += 36;
 	}
 
-	//‰º‚É‚Â‚­‚Æ7í—Ş‚Ì•`‰æE^‚ñ’†‚ÉˆÚ“®ˆ—
+	//ä¸‹ã«ã¤ãã¨7ç¨®é¡ã®æç”»ãƒ»çœŸã‚“ä¸­ã«ç§»å‹•å‡¦ç†
 	if (block_y + block_height >= window_height - 36) {
 
 		switch (block_kind) {
@@ -191,34 +191,34 @@ void Game::Process() {
 
 
 
-	//debug—p
+	//debugç”¨
 	if (dx.KeyState[DIK_RETURN] == dx.PRESS) {
 		Phase = RELEASES;
 	}
 }
 
-//ƒQ[ƒ€‚ÌƒeƒNƒXƒ`ƒƒ‚Ì‰ğ•ú
+//ã‚²ãƒ¼ãƒ ã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®è§£æ”¾
 void Game::Release() {
-	//ƒuƒƒbƒNˆÊ’u‚Ì‰Šú‰»
+	//ãƒ–ãƒ­ãƒƒã‚¯ä½ç½®ã®åˆæœŸåŒ–
 	block_x = stage_x + 108;
 	block_y = -144;
 
-	//ƒeƒNƒXƒ`ƒƒ‚ÌŠJ•ú
+	//ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®é–‹æ”¾
 	dx.pTexture[GAME_BACK]->Release();
 	dx.pTexture[GAME_BACK] = nullptr;
 	dx.pTexture[GAME_BLOCK]->Release();
 	dx.pTexture[GAME_BLOCK] = nullptr;
 
-	//ƒŠƒUƒ‹ƒgƒV[ƒ“‚Ö
+	//ãƒªã‚¶ãƒ«ãƒˆã‚·ãƒ¼ãƒ³ã¸
 	scene = RESULT;
 }
 
 void Game::DrawBlocks() {
 
-	/*ƒuƒƒbƒN•`‰æ*/
+	/*ãƒ–ãƒ­ãƒƒã‚¯æç”»*/
 
 	if (block_kind == L) {
-		//L‚ÌƒuƒƒbƒN
+		//Lã®ãƒ–ãƒ­ãƒƒã‚¯
 		for (block_row = 0; block_row < 4; block_row++) {
 
 			for (block_col = 0; block_col < 4; block_col++) {
@@ -244,7 +244,7 @@ void Game::DrawBlocks() {
 
 	}
 	else if (block_kind == I) {
-		//I‚ÌƒuƒƒbƒN
+		//Iã®ãƒ–ãƒ­ãƒƒã‚¯
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
 			for (INT block_col = 0; block_col < 4; block_col++) {
@@ -257,7 +257,7 @@ void Game::DrawBlocks() {
 		}
 	}
 	else if (block_kind == J) {
-		//J‚ÌƒuƒƒbƒN
+		//Jã®ãƒ–ãƒ­ãƒƒã‚¯
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
 			for (INT block_col = 0; block_col < 4; block_col++) {
@@ -269,7 +269,7 @@ void Game::DrawBlocks() {
 		}
 	}
 	else if (block_kind == S) {
-		//S‚ÌƒuƒƒbƒN
+		//Sã®ãƒ–ãƒ­ãƒƒã‚¯
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
 			for (INT block_col = 0; block_col < 4; block_col++) {
@@ -282,7 +282,7 @@ void Game::DrawBlocks() {
 		}
 	}
 	else if (block_kind == O) {
-		//O‚ÌƒuƒƒbƒN
+		//Oã®ãƒ–ãƒ­ãƒƒã‚¯
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
 			for (INT block_col = 0; block_col < 4; block_col++) {
@@ -295,7 +295,7 @@ void Game::DrawBlocks() {
 		}
 	}
 	else if (block_kind == Z) {
-		//Z‚ÌƒuƒƒbƒN
+		//Zã®ãƒ–ãƒ­ãƒƒã‚¯
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
 			for (INT block_col = 0; block_col < 4; block_col++) {
@@ -308,7 +308,7 @@ void Game::DrawBlocks() {
 		}
 	}
 	else if (block_kind == T) {
-		//T‚ÌƒuƒƒbƒN
+		//Tã®ãƒ–ãƒ­ãƒƒã‚¯
 		for (INT block_row = 0; block_row < 4; block_row++) {
 
 			for (INT block_col = 0; block_col < 4; block_col++) {
@@ -324,7 +324,7 @@ void Game::DrawBlocks() {
 
 void Game::Jugement() {
 
-	//“–‚½‚è”»’èE¶EL
+	//å½“ãŸã‚Šåˆ¤å®šãƒ»å·¦ãƒ»L
 	if (block_x <= stage_x - stage_block_width && (block_kind == L || block_kind == I || block_kind == J || block_kind == O)) {
 		block_x = stage_x - stage_block_width;
 	}
@@ -332,7 +332,7 @@ void Game::Jugement() {
 		block_x = stage_x;
 	}
 
-	//“–‚½‚è”»’èE‰E
+	//å½“ãŸã‚Šåˆ¤å®šãƒ»å³
 	if (block_x >= (stage_x + stage_width) - stage_block_width * 3 && block_kind != I) {
 		block_x = stage_x + stage_width - stage_block_width * 3;
 	}
@@ -341,11 +341,11 @@ void Game::Jugement() {
 	}
 }
 
-//* ƒuƒƒbƒN‚ğˆÊ’uî•ñ‚É]‚Á‚ÄƒtƒB[ƒ‹ƒh‚ÉƒRƒs[‚·‚é */
+//* ãƒ–ãƒ­ãƒƒã‚¯ã‚’ä½ç½®æƒ…å ±ã«å¾“ã£ã¦ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ */
 //void GAME::PIECE::PieceToField()
 //{
 //	for (int y = 0; y < PIECE_HEIGHT; y++) {
-//		for (int x = 0; x < PIECE_WIDTH; x++) {		// «(location.y)+y>=0 ‚Í“Yš‚Ì—LŒø«‚ğ’²‚×‚Ä‚¢‚é
+//		for (int x = 0; x < PIECE_WIDTH; x++) {		// â†“(location.y)+y>=0 ã¯æ·»å­—ã®æœ‰åŠ¹æ€§ã‚’èª¿ã¹ã¦ã„ã‚‹
 //			if (piece[x][y] && (location.y) + y >= 0) {
 //				field[(location.x) + x][(location.y) + y] = piece[x][y];
 //				fColor[(location.x) + x][(location.y) + y] = pColor[x][y];

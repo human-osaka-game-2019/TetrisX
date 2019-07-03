@@ -1,9 +1,9 @@
-#include "Title.h"
+ï»¿#include "Title.h"
 
-//ƒ^ƒCƒgƒ‹‚ÌƒtƒF[ƒY‚ÌéŒ¾
+//ã‚¿ã‚¤ãƒˆãƒ«ã®ãƒ•ã‚§ãƒ¼ã‚ºã®å®£è¨€
 Title::SCENE_PHASE Phase = Title::LOAD;
 
-//ƒ^ƒCƒgƒ‹‚ÌƒtƒF[ƒY‚ÌˆÚ“®
+//ã‚¿ã‚¤ãƒˆãƒ«ã®ãƒ•ã‚§ãƒ¼ã‚ºã®ç§»å‹•
 void Title::Title_Scene() {
 
 	switch (Phase) {
@@ -20,7 +20,7 @@ void Title::Title_Scene() {
 	}
 }
 
-//ƒ^ƒCƒgƒ‹‚ÌƒeƒNƒXƒ`ƒƒ‚Ì“Ç‚İ‚İ
+//ã‚¿ã‚¤ãƒˆãƒ«ã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®èª­ã¿è¾¼ã¿
 void Title::Loading() {
 			D3DXCreateTextureFromFile(
 			dx.pD3Device,
@@ -29,19 +29,19 @@ void Title::Loading() {
 		Phase = PROCESSING;
 }
 
-//ƒ^ƒCƒgƒ‹‚Ì•`‰æˆ—
+//ã‚¿ã‚¤ãƒˆãƒ«ã®æç”»å‡¦ç†
 void Title::Process() {
 
-	//ƒ^ƒCƒgƒ‹‚Ì•`‰æ
+	//ã‚¿ã‚¤ãƒˆãƒ«ã®æç”»
 	Draw(0, 0, 0.0f, 0.0f, window_width, window_height,1.0f,1.0f,TITLE_BACK);
 
-	//ƒGƒ“ƒ^[‚ÅƒQ[ƒ€‚Ö
+	//ã‚¨ãƒ³ã‚¿ãƒ¼ã§ã‚²ãƒ¼ãƒ ã¸
 	if (dx.KeyState[DIK_RETURN] == dx.PRESS) {
 		Phase = RELEASES;
 	}
 }
 
-//ƒ^ƒCƒgƒ‹‚ÌƒeƒNƒXƒ`ƒƒ‚Ì‰ğ•ú
+//ã‚¿ã‚¤ãƒˆãƒ«ã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®è§£æ”¾
 void Title::Release() {
 
 	for (int i = 0; i < TEX_MAX; i++) {
