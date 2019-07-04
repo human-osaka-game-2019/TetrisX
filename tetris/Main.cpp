@@ -79,7 +79,7 @@ void Draw(FLOAT x, FLOAT y,FLOAT tu,FLOAT tv,FLOAT width,FLOAT height,FLOAT tu_w
 	
 }
 
-//
+//ウィンドウ生成
 HWND GenerateWindow(HWND* hWnd,HINSTANCE* hInstance,const TCHAR* API_NAME) {
 	//ウィンドウクラス
 	WNDCLASS Wndclass;

@@ -132,7 +132,7 @@ void DirectX::UpdateKeyState() {
 			}
 			else{
 				if (prev_diks[i] == ON) {
-					KeyState[i] == RELEASE;
+					KeyState[i] = RELEASE;
 				}
 				else {
 					KeyState[i] = OFF;
