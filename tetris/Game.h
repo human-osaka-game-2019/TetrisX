@@ -20,6 +20,25 @@ public:
 
 private:
 
+	struct UV {
+		float u, v;
+		void SetUV(float tu, float tv){
+			u = tu; 
+			v = tv; 
+		}
+	};
+
+	enum DIRECTION {
+		LEFT,
+		RIGHT,
+		DOWN
+	};
+
+	struct Cell {
+		int col;
+		int row;
+	};
+
 	//ウィンドウのサイズ
 	FLOAT window_height = 720;
 	FLOAT window_width = 1280;
@@ -53,17 +72,29 @@ private:
 	INT block_col = 0;
 
 	//ブロックのtuとtv
-	FLOAT block_tu = 0.5f;
-	FLOAT block_tv = 0.5f;
+	FLOAT block_tu = 0.0f;
+	FLOAT block_tv = 0.0f;
 
-	//関数のプロトタイプ宣言
+	bool landed = false;
+
+	Cell block_position;
+
 	void Loading();
 	void Process();
 	void Release();
+
+	//関数プロトタイプ宣言
 	void DrawBlocks();
 	void Jugement();
+	bool CanMove(DIRECTION direction);
+	bool Conflict(Cell topleft);
+	void CreateBlock();
+	void MoveSide(DIRECTION direction);
+	void MoveDown();
+	void FixBloack();
 
-	//
+
+	//色
 	enum COLOR {
 		Back,
 		Red,
@@ -76,7 +107,9 @@ private:
 		Wall,
 	};
 
-	COLOR color = Back;
+	COLOR color = Red;
+
+	UV GetUV(COLOR);
 
 	//ブロックの種類
 	enum BLOCK_KIND {
@@ -89,7 +122,8 @@ private:
 		T
 	};
 
-	INT board[21][12] = {
+	COLOR board[25][12] = {
+	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
 	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
 	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
 	{Wall,Back,Back,Back,Back,Back,Back,Back,Back,Back,Back,Wall},
@@ -112,42 +146,9 @@ private:
 	{Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall,Wall},
 	};
 
-	//ステージのフラグ
-	bool exists[21][12] = {
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,false,false,false,false,false,false,false,false,false,false,true},
-		{true,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true},
 	};
 
-	// ピース管理構造体
-	typedef struct tagPIECE
-	{
-		//bool block[block_row][block_col]; // true：ブロックあり / false：なし
-		BYTE image;         // ブロックのビットマップ番号
-		char x, y;           // 左上のセル座標
-	}PIECE;
-
-	//現在移動中のブロックの位置 
-	PIECE location = { 0,0 };
-
+	Block block[4][4];
 };
 
 #endif
